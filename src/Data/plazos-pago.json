@@ -1,0 +1,14 @@
+[
+  {
+    "code": "01",
+    "name": "Días"
+  },
+  {
+    "code": "02",
+    "name": "Meses"
+  },
+  {
+    "code": "03",
+    "name": "Años"
+  }
+]

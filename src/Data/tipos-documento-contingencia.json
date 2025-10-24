@@ -1,0 +1,30 @@
+[
+  {
+    "code": "01",
+    "name": "Factura Electrónica"
+  },
+  {
+    "code": "03",
+    "name": "Comprobante de Crédito Fiscal Electrónico"
+  },
+  {
+    "code": "04",
+    "name": "Nota de Remisión Electrónica"
+  },
+  {
+    "code": "05",
+    "name": "Nota de Crédito Electrónica"
+  },
+  {
+    "code": "06",
+    "name": "Nota de Débito Electrónica"
+  },
+  {
+    "code": "11",
+    "name": "Factura de Exportación Electrónica"
+  },
+  {
+    "code": "14",
+    "name": "Factura de Sujeto Excluido Electrónica"
+  }
+]

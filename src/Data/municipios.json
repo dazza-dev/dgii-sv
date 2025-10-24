@@ -1,0 +1,182 @@
+[
+  {
+    "code": "00",
+    "name": "Otro (Para extranjeros)"
+  },
+  {
+    "code": "13",
+    "name": "AHUACHAPÁN NORTE"
+  },
+  {
+    "code": "14",
+    "name": "AHUACHAPÁN CENTRO"
+  },
+  {
+    "code": "15",
+    "name": "AHUACHAPÁN SUR"
+  },
+  {
+    "code": "14",
+    "name": "SANTA ANA NORTE"
+  },
+  {
+    "code": "15",
+    "name": "SANTA ANA CENTRO"
+  },
+  {
+    "code": "16",
+    "name": "SANTA ANA ESTE"
+  },
+  {
+    "code": "17",
+    "name": "SANTA ANA OESTE"
+  },
+  {
+    "code": "17",
+    "name": "SONSONATE NORTE"
+  },
+  {
+    "code": "18",
+    "name": "SONSONATE CENTRO"
+  },
+  {
+    "code": "19",
+    "name": "SONSONATE ESTE"
+  },
+  {
+    "code": "20",
+    "name": "SONSONATE OESTE"
+  },
+  {
+    "code": "34",
+    "name": "CHALATENANGO NORTE"
+  },
+  {
+    "code": "35",
+    "name": "CHALATENANGO CENTRO"
+  },
+  {
+    "code": "36",
+    "name": "CHALATENANGO SUR"
+  },
+  {
+    "code": "23",
+    "name": "LA LIBERTAD NORTE"
+  },
+  {
+    "code": "24",
+    "name": "LA LIBERTAD CENTRO"
+  },
+  {
+    "code": "25",
+    "name": "LA LIBERTAD OESTE"
+  },
+  {
+    "code": "26",
+    "name": "LA LIBERTAD ESTE"
+  },
+  {
+    "code": "27",
+    "name": "LA LIBERTAD COSTA"
+  },
+  {
+    "code": "28",
+    "name": "LA LIBERTAD SUR"
+  },
+  {
+    "code": "20",
+    "name": "SAN SALVADOR NORTE"
+  },
+  {
+    "code": "21",
+    "name": "SAN SALVADOR OESTE"
+  },
+  {
+    "code": "22",
+    "name": "SAN SALVADOR ESTE"
+  },
+  {
+    "code": "23",
+    "name": "SAN SALVADOR CENTRO"
+  },
+  {
+    "code": "24",
+    "name": "SAN SALVADOR SUR"
+  },
+  {
+    "code": "17",
+    "name": "CUSCATLÁN NORTE"
+  },
+  {
+    "code": "18",
+    "name": "CUSCATLÁN SUR"
+  },
+  {
+    "code": "23",
+    "name": "LA PAZ OESTE"
+  },
+  {
+    "code": "24",
+    "name": "LA PAZ CENTRO"
+  },
+  {
+    "code": "25",
+    "name": "LA PAZ ESTE"
+  },
+  {
+    "code": "10",
+    "name": "CABAÑAS OESTE"
+  },
+  {
+    "code": "11",
+    "name": "CABAÑAS ESTE"
+  },
+  {
+    "code": "14",
+    "name": "SAN VICENTE NORTE"
+  },
+  {
+    "code": "15",
+    "name": "SAN VICENTE SUR"
+  },
+  {
+    "code": "24",
+    "name": "USULUTÁN NORTE"
+  },
+  {
+    "code": "25",
+    "name": "USULUTÁN ESTE"
+  },
+  {
+    "code": "26",
+    "name": "USULUTÁN OESTE"
+  },
+  {
+    "code": "21",
+    "name": "SAN MIGUEL NORTE"
+  },
+  {
+    "code": "22",
+    "name": "SAN MIGUEL CENTRO"
+  },
+  {
+    "code": "23",
+    "name": "SAN MIGUEL OESTE"
+  },
+  {
+    "code": "27",
+    "name": "MORAZÁN NORTE"
+  },
+  {
+    "code": "28",
+    "name": "MORAZÁN SUR"
+  },
+  {
+    "code": "19",
+    "name": "LA UNIÓN NORTE"
+  },
+  {
+    "code": "20",
+    "name": "LA UNIÓN SUR"
+  }
+]

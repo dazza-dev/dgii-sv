@@ -1,0 +1,198 @@
+[
+  {
+    "codigo": "20",
+    "name": "Impuesto al Valor Agregado 13%"
+  },
+  {
+    "codigo": "C3",
+    "name": "Impuesto al Valor Agregado (exportaciones) 0%"
+  },
+  {
+    "codigo": "59",
+    "name": "Turismo: por alojamiento (5%)"
+  },
+  {
+    "codigo": "71",
+    "name": "Turismo: salida del país por vía aérea $7.00"
+  },
+  {
+    "codigo": "D1",
+    "name": "FOVIAL ($0.20 Ctvs. por galón)"
+  },
+  {
+    "codigo": "C8",
+    "name": "COTRANS ($0.10 Ctvs. por galón)"
+  },
+  {
+    "codigo": "D5",
+    "name": "Otras tasas casos especiales"
+  },
+  {
+    "codigo": "D4",
+    "name": "Otros impuestos casos especiales"
+  },
+  {
+    "codigo": "A8",
+    "name": "Impuesto Especial al Combustible (0%, 0.5%, 1%)"
+  },
+  {
+    "codigo": "57",
+    "name": "Impuesto industria de Cemento"
+  },
+  {
+    "codigo": "90",
+    "name": "Impuesto especial a la primera matrícula"
+  },
+  {
+    "codigo": "D4",
+    "name": "Otros impuestos casos especiales"
+  },
+  {
+    "codigo": "D5",
+    "name": "Otras tasas casos especiales"
+  },
+  {
+    "codigo": "A6",
+    "name": "Impuesto ad- valorem, armas de fuego, municiones explosivas y artículos similares"
+  },
+  {
+    "codigo": "C5",
+    "name": "Impuesto ad- valorem por diferencial de precios de bebidas alcohólicas (8%)"
+  },
+  {
+    "codigo": "C6",
+    "name": "Impuesto ad- valorem por diferencial de precios al tabaco cigarrillos (39%)"
+  },
+  {
+    "codigo": "C7",
+    "name": "Impuesto ad- valorem por diferencial de precios al tabaco cigarros (100%)"
+  },
+  {
+    "codigo": "19",
+    "name": "Fabricante de Bebidas Gaseosas, Isotónicas, Deportivas, Fortificantes, Energizante o Estimulante"
+  },
+  {
+    "codigo": "28",
+    "name": "Importador de Bebidas Gaseosas, Isotónicas, Deportivas, Fortificantes, Energizante o Estimulante"
+  },
+  {
+    "codigo": "31",
+    "name": "Detallistas o Expendedores de Bebidas Alcohólicas"
+  },
+  {
+    "codigo": "32",
+    "name": "Fabricante de Cerveza"
+  },
+  {
+    "codigo": "33",
+    "name": "Importador de Cerveza"
+  },
+  {
+    "codigo": "34",
+    "name": "Fabricante de Productos de Tabaco"
+  },
+  {
+    "codigo": "35",
+    "name": "Importador de Productos de Tabaco"
+  },
+  {
+    "codigo": "36",
+    "name": "Fabricante de Armas de Fuego, Municiones y Artículos Similares"
+  },
+  {
+    "codigo": "37",
+    "name": "Importador de Arma de Fuego, Munición y Artículos Similares"
+  },
+  {
+    "codigo": "38",
+    "name": "Fabricante de Explosivos"
+  },
+  {
+    "codigo": "39",
+    "name": "Importador de Explosivos"
+  },
+  {
+    "codigo": "42",
+    "name": "Fabricante de Productos Pirotécnicos"
+  },
+  {
+    "codigo": "45",
+    "name": "Importador de Productos Pirotécnicos"
+  },
+  {
+    "codigo": "44",
+    "name": "Productor de Tabaco"
+  },
+  {
+    "codigo": "50",
+    "name": "Distribuidor de Bebidas Gaseosas, Isotónicas, Deportivas, Fortificantes, Energizante o Estimulante"
+  },
+  {
+    "codigo": "51",
+    "name": "Bebidas Alcohólicas"
+  },
+  {
+    "codigo": "52",
+    "name": "Cerveza"
+  },
+  {
+    "codigo": "53",
+    "name": "Productos del Tabaco"
+  },
+  {
+    "codigo": "54",
+    "name": "Bebidas Carbonatadas o Gaseosas Simples o Endulzadas"
+  },
+  {
+    "codigo": "55",
+    "name": "Otros Específicos"
+  },
+  {
+    "codigo": "58",
+    "name": "Alcohol"
+  },
+  {
+    "codigo": "77",
+    "name": "Importador de Jugos, Néctares, Bebidas con Jugo y Refrescos"
+  },
+  {
+    "codigo": "78",
+    "name": "Distribuidor de Jugos, Néctares, Bebidas con Jugo y Refrescos"
+  },
+  {
+    "codigo": "79",
+    "name": "Sobre Llamadas Telefónicas Provenientes del Ext."
+  },
+  {
+    "codigo": "85",
+    "name": "Detallista de Jugos, Néctares, Bebidas con Jugo y Refrescos"
+  },
+  {
+    "codigo": "86",
+    "name": "Fabricante de Preparaciones Concentradas o en Polvo para la Elaboración de Bebidas"
+  },
+  {
+    "codigo": "91",
+    "name": "Fabricante de Jugos, Néctares, Bebidas con Jugo y Refrescos"
+  },
+  {
+    "codigo": "92",
+    "name": "Importador de Preparaciones Concentradas o en Polvo para la Elaboración de Bebidas"
+  },
+  {
+    "codigo": "A1",
+    "name": "Específicos por Ad-Valorem"
+  },
+  {
+    "codigo": "A5",
+    "name": "Bebidas Gaseosas, Isotónicas, Deportivas, Fortificantes, Energizantes o Estimulantes"
+  },
+  {
+    "codigo": "A7",
+    "name": "Alcohol Etílico"
+  },
+  {
+    "codigo": "A9",
+    "name": "Sacos Sintéticos"
+  }
+]
