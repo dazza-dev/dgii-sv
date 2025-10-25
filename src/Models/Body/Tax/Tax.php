@@ -126,7 +126,7 @@ class Tax
      */
     private function setTaxPercentage(int|string $taxTypeCode, int|string $percentageCode): void
     {
-        $percentageData = (new DataLoader('taxes/' . $taxTypeCode))->getByCode($percentageCode);
+        $percentageData = (new DataLoader('taxes/'.$taxTypeCode))->getByCode($percentageCode);
 
         $this->taxPercentage = new TaxPercentage($percentageData);
     }

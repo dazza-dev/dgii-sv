@@ -11,7 +11,6 @@ class Invoice extends Document
      */
     public function __construct(array $data = [])
     {
-        // Document type
         $this->setDocumentType('01');
         $this->setVersion(1);
 

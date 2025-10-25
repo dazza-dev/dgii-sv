@@ -9,12 +9,12 @@ trait IssuerTrait
     /**
      * Issuer information
      */
-    private Issuer $issuer;
+    private ?Issuer $issuer = null;
 
     /**
      * Get issuer
      */
-    public function getIssuer(): Issuer
+    public function getIssuer(): ?Issuer
     {
         return $this->issuer;
     }

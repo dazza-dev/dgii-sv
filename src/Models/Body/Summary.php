@@ -236,7 +236,7 @@ class Summary
             'total_subsidy' => $this->getTotalSubsidy(),
             'total_discount' => $this->getTotalDiscount(),
             'reimbursement' => $this->getReimbursement()?->toArray(),
-            'taxes' => array_map(fn(Tax $tax) => $tax->toArray(), $this->getTaxes()),
+            'taxes' => array_map(fn (Tax $tax) => $tax->toArray(), $this->getTaxes()),
             'tip' => $this->getTip(),
             'total' => $this->getTotal(),
         ];

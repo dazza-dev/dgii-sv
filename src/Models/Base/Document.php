@@ -4,11 +4,13 @@ namespace DazzaDev\DgiiSv\Models\Base;
 
 use DazzaDev\DgiiSv\Traits\DocumentTypeTrait;
 use DazzaDev\DgiiSv\Traits\IssuerTrait;
+use DazzaDev\DgiiSv\Traits\ReceiverTrait;
 
 class Document extends DTEModel
 {
     use DocumentTypeTrait;
     use IssuerTrait;
+    use ReceiverTrait;
 
     /**
      * Currency
@@ -46,6 +48,10 @@ class Document extends DTEModel
         if (isset($data['issuer'])) {
             $this->setIssuer($data['issuer']);
         }
+
+        if (isset($data['receiver'])) {
+            $this->setReceiver($data['receiver']);
+        }
     }
 
     /**
@@ -78,7 +84,8 @@ class Document extends DTEModel
 
         return [
             'identificacion' => $identification,
-            'emisor' => $this->getIssuer()->toArray(),
+            'emisor' => $this->getIssuer()?->toArray(),
+            'receptor' => $this->getReceiver()?->toArray(),
         ];
     }
 }
