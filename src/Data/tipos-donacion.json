@@ -1,14 +1,14 @@
 [
   {
-    "code": "1",
+    "code": 1,
     "name": "Efectivo"
   },
   {
-    "code": "2",
+    "code": 2,
     "name": "Bien"
   },
   {
-    "code": "3",
+    "code": 3,
     "name": "Servicio"
   }
 ]
