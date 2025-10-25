@@ -3,6 +3,7 @@
 namespace DazzaDev\DgiiSv\Models\Base;
 
 use DazzaDev\DgiiSv\Models\Body\AdditionalInfo;
+use DazzaDev\DgiiSv\Models\Body\RelatedDocument;
 use DazzaDev\DgiiSv\Traits\DocumentTypeTrait;
 use DazzaDev\DgiiSv\Traits\IssuerTrait;
 use DazzaDev\DgiiSv\Traits\ReceiverTrait;
@@ -24,6 +25,11 @@ class Document extends DTEModel
      * @var AdditionalInfo[]
      */
     private array $additionalInfo = [];
+
+    /**
+     * Related document (documentoRelacionado)
+     */
+    private ?RelatedDocument $relatedDocument = null;
 
     /**
      * Document constructor
@@ -64,6 +70,11 @@ class Document extends DTEModel
         // Additional info
         if (isset($data['additional_info'])) {
             $this->setAdditionalInfo($data['additional_info']);
+        }
+
+        // Related document
+        if (isset($data['related_document'])) {
+            $this->setRelatedDocument($data['related_document']);
         }
     }
 
@@ -113,6 +124,22 @@ class Document extends DTEModel
     }
 
     /**
+     * Get related document
+     */
+    public function getRelatedDocument(): ?RelatedDocument
+    {
+        return $this->relatedDocument;
+    }
+
+    /**
+     * Set related document
+     */
+    public function setRelatedDocument(array|RelatedDocument $relatedDocument): void
+    {
+        $this->relatedDocument = $relatedDocument instanceof RelatedDocument ? $relatedDocument : new RelatedDocument($relatedDocument);
+    }
+
+    /**
      * Get array representation
      */
     public function toArray(): array
@@ -128,6 +155,7 @@ class Document extends DTEModel
             'identificacion' => $identification,
             'emisor' => $this->getIssuer()?->toArray(),
             'receptor' => $this->getReceiver()?->toArray(),
+            'documentoRelacionado' => $this->getRelatedDocument()?->toArray(),
         ];
 
         // Appendices
