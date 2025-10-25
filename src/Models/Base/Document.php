@@ -2,6 +2,7 @@
 
 namespace DazzaDev\DgiiSv\Models\Base;
 
+use DazzaDev\DgiiSv\Models\Body\AdditionalInfo;
 use DazzaDev\DgiiSv\Traits\DocumentTypeTrait;
 use DazzaDev\DgiiSv\Traits\IssuerTrait;
 use DazzaDev\DgiiSv\Traits\ReceiverTrait;
@@ -16,6 +17,13 @@ class Document extends DTEModel
      * Currency
      */
     private string $currency = 'USD';
+
+    /**
+     * Additional information
+     *
+     * @var AdditionalInfo[]
+     */
+    private array $additionalInfo = [];
 
     /**
      * Document constructor
@@ -52,6 +60,11 @@ class Document extends DTEModel
         if (isset($data['receiver'])) {
             $this->setReceiver($data['receiver']);
         }
+
+        // Additional info
+        if (isset($data['additional_info'])) {
+            $this->setAdditionalInfo($data['additional_info']);
+        }
     }
 
     /**
@@ -71,6 +84,35 @@ class Document extends DTEModel
     }
 
     /**
+     * Get additional info
+     *
+     * @return AdditionalInfo[]
+     */
+    public function getAdditionalInfo(): array
+    {
+        return $this->additionalInfo;
+    }
+
+    /**
+     * Set additional info
+     */
+    public function setAdditionalInfo(array $additionalInfo): void
+    {
+        $this->additionalInfo = [];
+        foreach ($additionalInfo as $info) {
+            $this->addAdditionalInfo($info);
+        }
+    }
+
+    /**
+     * Add additional info item
+     */
+    public function addAdditionalInfo(array|AdditionalInfo $info): void
+    {
+        $this->additionalInfo[] = $info instanceof AdditionalInfo ? $info : new AdditionalInfo($info);
+    }
+
+    /**
      * Get array representation
      */
     public function toArray(): array
@@ -82,10 +124,17 @@ class Document extends DTEModel
             'tipoMoneda' => $this->getCurrency(),
         ]);
 
-        return [
+        $document = [
             'identificacion' => $identification,
             'emisor' => $this->getIssuer()?->toArray(),
             'receptor' => $this->getReceiver()?->toArray(),
         ];
+
+        // Appendices
+        if (! empty($this->getAdditionalInfo())) {
+            $document['apendice'] = array_map(fn (AdditionalInfo $info) => $info->toArray(), $this->getAdditionalInfo());
+        }
+
+        return $document;
     }
 }

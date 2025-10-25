@@ -5,12 +5,17 @@ namespace DazzaDev\DgiiSv\Models\Body;
 class AdditionalInfo
 {
     /**
-     * Additional info name
+     * Field name
      */
-    private string $name = '';
+    private string $field = '';
 
     /**
-     * Additional info value
+     * Field label
+     */
+    private string $label = '';
+
+    /**
+     * Field value
      */
     private string $value = '';
 
@@ -31,8 +36,12 @@ class AdditionalInfo
             return;
         }
 
-        if (isset($data['name'])) {
-            $this->setName($data['name']);
+        if (isset($data['field'])) {
+            $this->setField($data['field']);
+        }
+
+        if (isset($data['label'])) {
+            $this->setLabel($data['label']);
         }
 
         if (isset($data['value'])) {
@@ -41,23 +50,39 @@ class AdditionalInfo
     }
 
     /**
-     * Get additional info name
+     * Get field name
      */
-    public function getName(): string
+    public function getField(): string
     {
-        return $this->name;
+        return $this->field;
     }
 
     /**
-     * Set additional info name
+     * Set field name
      */
-    public function setName(string $name): void
+    public function setField(string $field): void
     {
-        $this->name = $name;
+        $this->field = $field;
     }
 
     /**
-     * Get additional info value
+     * Get field label
+     */
+    public function getLabel(): string
+    {
+        return $this->label;
+    }
+
+    /**
+     * Set field label
+     */
+    public function setLabel(string $label): void
+    {
+        $this->label = $label;
+    }
+
+    /**
+     * Get field value
      */
     public function getValue(): string
     {
@@ -65,7 +90,7 @@ class AdditionalInfo
     }
 
     /**
-     * Set additional info value
+     * Set field value
      */
     public function setValue(string $value): void
     {
@@ -78,8 +103,9 @@ class AdditionalInfo
     public function toArray(): array
     {
         return [
-            'name' => $this->getName(),
-            'value' => $this->getValue(),
+            'campo' => $this->getField(),
+            'etiqueta' => $this->getLabel(),
+            'valor' => $this->getValue(),
         ];
     }
 }
