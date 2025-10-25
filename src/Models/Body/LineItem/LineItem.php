@@ -1,6 +1,6 @@
 <?php
 
-namespace DazzaDev\DgiiSv\Models\Body;
+namespace DazzaDev\DgiiSv\Models\Body\LineItem;
 
 use DazzaDev\DgiiSv\Models\Body\Tax\Tax;
 
@@ -343,9 +343,6 @@ class LineItem
             'unit_price_without_subsidy' => $this->getUnitPriceWithoutSubsidy(),
             'discount' => $this->getDiscount(),
             'total_price_without_tax' => $this->getTotalPriceWithoutTax(),
-            'additional_info' => array_map(function (AdditionalInfo $info) {
-                return $info->toArray();
-            }, $this->getAdditionalInfo()),
             'taxes' => array_map(function (Tax $tax) {
                 return $tax->toArray();
             }, $this->getTaxes()),
