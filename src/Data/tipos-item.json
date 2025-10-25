@@ -1,18 +1,18 @@
 [
   {
-    "code": "1",
+    "code": 1,
     "name": "Bienes"
   },
   {
-    "code": "2",
+    "code": 2,
     "name": "Servicios"
   },
   {
-    "code": "3",
+    "code": 3,
     "name": "Ambos (Bienes y Servicios, incluye los dos inherente a los Productos o servicios)"
   },
   {
-    "code": "4",
+    "code": 4,
     "name": "Otros tributos por ítem"
   }
 ]

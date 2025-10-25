@@ -2,84 +2,40 @@
 
 namespace DazzaDev\DgiiSv\Models\Body\LineItem;
 
+use DazzaDev\DgiiSv\DataLoader;
 use DazzaDev\DgiiSv\Models\Body\Tax\Tax;
 
 class LineItem
 {
     /**
-     * Main code
-     */
-    private string $code;
-
-    /**
-     * Auxiliary code
-     */
-    private ?string $auxiliaryCode = null;
-
-    /**
-     * Description
-     */
-    private string $description;
-
-    /**
-     * Unit of measure
-     */
-    private string $unit;
-
-    /**
-     * Quantity
-     */
-    private float $quantity;
-
-    /**
-     * Unit price
-     */
-    private float $unitPrice;
-
-    /**
-     * Unit price without subsidy
-     */
-    private ?float $unitPriceWithoutSubsidy = null;
-
-    /**
-     * Discount
-     */
-    private float $discount = 0.0;
-
-    /**
-     * Total price without tax
-     */
-    private float $totalPriceWithoutTax;
-
-    /**
-     * Additional information
-     */
-    private array $additionalInfo = [];
-
-    /**
-     * Taxes
-     */
-    private array $taxes = [];
-
-    /**
-     * N° de ítem (numItem)
+     * Item Number (numItem)
      */
     private int $itemNumber = 1;
 
     /**
-     * Tipo de ítem (tipoItem)
+     * Item Type (tipoItem)
      */
-    private int $itemType = 1;
+    private ?LineItemType $itemType = null;
 
     /**
-     * Número de documento relacionado (numeroDocumento)
+     * Related Document Number (numeroDocumento)
      */
     private ?string $relatedDocumentNumber = null;
 
     /**
-     * Unidad de medida (uniMedida)
+     * Quantity (cantidad)
      */
-    private int $unitMeasure = 99;
+    private ?string $quantity = null;
+
+    /**
+     * Code (codigo)
+     */
+    private ?string $code = null;
+
+    /**
+     * Unit Measure (uniMedida)
+     */
+    private ?int $unitMeasure = null;
 
     /**
      * Código del tributo especial (codTributo)
@@ -140,13 +96,95 @@ class LineItem
             return;
         }
 
+        if (isset($data['item_number'])) {
+            $this->setItemNumber($data['item_number']);
+        }
+
+        if (isset($data['item_type'])) {
+            $this->setItemType((int) $data['item_type']);
+        }
+
+        if (isset($data['related_document_number'])) {
+            $this->setRelatedDocumentNumber($data['related_document_number']);
+        }
+
+        if (isset($data['quantity'])) {
+            $this->setQuantity((float) $data['quantity']);
+        }
+
         if (isset($data['code'])) {
             $this->setCode($data['code']);
         }
 
-        if (isset($data['auxiliary_code'])) {
-            $this->setAuxiliaryCode($data['auxiliary_code']);
+        if (isset($data['unit_measure'])) {
+            $this->setUnitMeasure((int) $data['unit_measure']);
         }
+    }
+
+    /**
+     * Get item number
+     */
+    public function getItemNumber(): int
+    {
+        return $this->itemNumber;
+    }
+
+    /**
+     * Set item number
+     */
+    public function setItemNumber(int $itemNumber): void
+    {
+        $this->itemNumber = $itemNumber;
+    }
+
+    /**
+     * Get item type
+     */
+    public function getItemType(): ?LineItemType
+    {
+        return $this->itemType;
+    }
+
+    /**
+     * Set item type
+     */
+    public function setItemType(int $itemTypeCode): void
+    {
+        $itemType = (new DataLoader('tipos-item'))->getByCode($itemTypeCode);
+
+        $this->itemType = new LineItemType($itemType);
+    }
+
+    /**
+     * Get related document number
+     */
+    public function getRelatedDocumentNumber(): ?string
+    {
+        return $this->relatedDocumentNumber;
+    }
+
+    /**
+     * Set related document number
+     */
+    public function setRelatedDocumentNumber(string $relatedDocumentNumber): void
+    {
+        $this->relatedDocumentNumber = $relatedDocumentNumber;
+    }
+
+    /**
+     * Get quantity
+     */
+    public function getQuantity(): ?float
+    {
+        return $this->quantity;
+    }
+
+    /**
+     * Set quantity
+     */
+    public function setQuantity(float $quantity): void
+    {
+        $this->quantity = $quantity;
     }
 
     /**
@@ -166,67 +204,19 @@ class LineItem
     }
 
     /**
-     * Get auxiliary code
-     */
-    public function getAuxiliaryCode(): ?string
-    {
-        return $this->auxiliaryCode;
-    }
-
-    /**
-     * Set auxiliary code
-     */
-    public function setAuxiliaryCode(string $auxiliaryCode): void
-    {
-        $this->auxiliaryCode = $auxiliaryCode;
-    }
-
-    /**
-     * Get description
-     */
-    public function getDescription(): string
-    {
-        return $this->description;
-    }
-
-    /**
-     * Set description
-     */
-    public function setDescription(string $description): void
-    {
-        $this->description = $description;
-    }
-
-    /**
      * Get unit of measure
      */
-    public function getUnit(): string
+    public function getUnitMeasure(): string
     {
-        return $this->unit;
+        return $this->unitMeasure;
     }
 
     /**
      * Set unit of measure
      */
-    public function setUnit(string $unit): void
+    public function setUnitMeasure(int $unitMeasure): void
     {
-        $this->unit = $unit;
-    }
-
-    /**
-     * Get quantity
-     */
-    public function getQuantity(): float
-    {
-        return $this->quantity;
-    }
-
-    /**
-     * Set quantity
-     */
-    public function setQuantity(float $quantity): void
-    {
-        $this->quantity = $quantity;
+        $this->unitMeasure = $unitMeasure;
     }
 
     /**
@@ -243,62 +233,6 @@ class LineItem
     public function setUnitPrice(float $unitPrice): void
     {
         $this->unitPrice = $unitPrice;
-    }
-
-    /**
-     * Get unit price without subsidy
-     */
-    public function getUnitPriceWithoutSubsidy(): ?float
-    {
-        return $this->unitPriceWithoutSubsidy;
-    }
-
-    /**
-     * Set unit price without subsidy
-     */
-    public function setUnitPriceWithoutSubsidy(?float $unitPriceWithoutSubsidy): void
-    {
-        $this->unitPriceWithoutSubsidy = $unitPriceWithoutSubsidy;
-    }
-
-    /**
-     * Get discount
-     */
-    public function getDiscount(): float
-    {
-        return $this->discount;
-    }
-
-    /**
-     * Set discount
-     */
-    public function setDiscount(float $discount): void
-    {
-        $this->discount = $discount;
-    }
-
-    /**
-     * Get total price without tax
-     */
-    public function getTotalPriceWithoutTax(): float
-    {
-        return $this->totalPriceWithoutTax;
-    }
-
-    /**
-     * Set total price without tax
-     */
-    public function setTotalPriceWithoutTax(float $totalPriceWithoutTax): void
-    {
-        $this->totalPriceWithoutTax = $totalPriceWithoutTax;
-    }
-
-    /**
-     * Get additional information
-     */
-    public function getAdditionalInfo(): array
-    {
-        return $this->additionalInfo;
     }
 
     /**
@@ -334,15 +268,9 @@ class LineItem
     public function toArray(): array
     {
         return [
-            'code' => $this->getCode(),
-            'auxiliary_code' => $this->getAuxiliaryCode(),
-            'description' => $this->getDescription(),
-            'unit' => $this->getUnit(),
+            'numItem' => $this->getItemNumber(),
+            'tipoItem' => $this->getItemType()->getCode(),
             'quantity' => $this->getQuantity(),
-            'unit_price' => $this->getUnitPrice(),
-            'unit_price_without_subsidy' => $this->getUnitPriceWithoutSubsidy(),
-            'discount' => $this->getDiscount(),
-            'total_price_without_tax' => $this->getTotalPriceWithoutTax(),
             'taxes' => array_map(function (Tax $tax) {
                 return $tax->toArray();
             }, $this->getTaxes()),
