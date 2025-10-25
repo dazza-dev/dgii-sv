@@ -3,6 +3,7 @@
 namespace DazzaDev\DgiiSv\Models\Base;
 
 use DazzaDev\DgiiSv\Models\Body\AdditionalInfo;
+use DazzaDev\DgiiSv\Models\Body\OtherDocument;
 use DazzaDev\DgiiSv\Models\Body\RelatedDocument;
 use DazzaDev\DgiiSv\Traits\DocumentTypeTrait;
 use DazzaDev\DgiiSv\Traits\IssuerTrait;
@@ -30,6 +31,13 @@ class Document extends DTEModel
      * Related document (documentoRelacionado)
      */
     private ?RelatedDocument $relatedDocument = null;
+
+    /**
+     * Other documents (otrosDocumentos)
+     *
+     * @var OtherDocument[]
+     */
+    private array $otherDocuments = [];
 
     /**
      * Document constructor
@@ -75,6 +83,11 @@ class Document extends DTEModel
         // Related document
         if (isset($data['related_document'])) {
             $this->setRelatedDocument($data['related_document']);
+        }
+
+        // Other documents
+        if (isset($data['other_documents'])) {
+            $this->setOtherDocuments($data['other_documents']);
         }
     }
 
@@ -140,6 +153,35 @@ class Document extends DTEModel
     }
 
     /**
+     * Get other documents
+     *
+     * @return OtherDocument[]
+     */
+    public function getOtherDocuments(): array
+    {
+        return $this->otherDocuments;
+    }
+
+    /**
+     * Set other documents
+     */
+    public function setOtherDocuments(array $otherDocuments): void
+    {
+        $this->otherDocuments = [];
+        foreach ($otherDocuments as $doc) {
+            $this->addOtherDocument($doc);
+        }
+    }
+
+    /**
+     * Add other document item
+     */
+    public function addOtherDocument(array|OtherDocument $otherDocument): void
+    {
+        $this->otherDocuments[] = $otherDocument instanceof OtherDocument ? $otherDocument : new OtherDocument($otherDocument);
+    }
+
+    /**
      * Get array representation
      */
     public function toArray(): array
@@ -156,6 +198,7 @@ class Document extends DTEModel
             'emisor' => $this->getIssuer()?->toArray(),
             'receptor' => $this->getReceiver()?->toArray(),
             'documentoRelacionado' => $this->getRelatedDocument()?->toArray(),
+            'otrosDocumentos' => array_map(fn (OtherDocument $doc) => $doc->toArray(), $this->getOtherDocuments()),
         ];
 
         // Appendices

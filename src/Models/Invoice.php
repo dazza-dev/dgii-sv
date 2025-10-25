@@ -3,9 +3,12 @@
 namespace DazzaDev\DgiiSv\Models;
 
 use DazzaDev\DgiiSv\Models\Base\Document;
+use DazzaDev\DgiiSv\Traits\JsonTrait;
 
 class Invoice extends Document
 {
+    use JsonTrait;
+
     /**
      * Invoice constructor
      */
