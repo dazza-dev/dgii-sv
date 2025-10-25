@@ -1,17 +1,20 @@
 <?php
 
-namespace DazzaDev\DgiiSv\Models\Body;
+namespace DazzaDev\DgiiSv\Models\Body\OtherDocument;
 
-use DazzaDev\DgiiSv\Traits\DocumentTypeTrait;
+use DazzaDev\DgiiSv\DataLoader;
 
 class OtherDocument
 {
-    use DocumentTypeTrait;
+    /**
+     * Document Type
+     */
+    private ?OtherDocumentType $documentType = null;
 
     /**
-     * Document number
+     * Document description
      */
-    private ?string $documentNumber = null;
+    private ?string $description = null;
 
     /**
      * Document detail
@@ -31,34 +34,55 @@ class OtherDocument
      */
     private function initialize(array $data): void
     {
+        if (empty($data)) {
+            return;
+        }
 
         if (isset($data['document_type'])) {
             $this->setDocumentType($data['document_type']);
         }
 
-        if (array_key_exists('document_number', $data)) {
-            $this->setDocumentNumber($data['document_number']);
+        if (isset($data['description'])) {
+            $this->setDescription($data['description']);
         }
 
-        if (array_key_exists('detail', $data)) {
+        if (isset($data['detail'])) {
             $this->setDetail($data['detail']);
         }
     }
 
     /**
+     * Get document type
+     */
+    public function getDocumentType(): OtherDocumentType
+    {
+        return $this->documentType;
+    }
+
+    /**
+     * Set document type
+     */
+    public function setDocumentType(string $documentTypeCode): void
+    {
+        $documentType = (new DataLoader('otros-documentos-asociados'))->getByCode($documentTypeCode);
+
+        $this->documentType = new OtherDocumentType($documentType);
+    }
+
+    /**
      * Get document number
      */
-    public function getDocumentNumber(): ?string
+    public function getDescription(): ?string
     {
-        return $this->documentNumber;
+        return $this->description;
     }
 
     /**
      * Set document number
      */
-    public function setDocumentNumber(string $number): void
+    public function setDescription(string $description): void
     {
-        $this->documentNumber = $number;
+        $this->description = $description;
     }
 
     /**
@@ -84,7 +108,7 @@ class OtherDocument
     {
         return [
             'codDocAsociado' => $this->getDocumentType()->getCode(),
-            'descDocumento' => $this->getDocumentNumber(),
+            'descDocumento' => $this->getDescription(),
             'detalleDocumento' => $this->getDetail(),
         ];
     }

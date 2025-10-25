@@ -3,8 +3,9 @@
 namespace DazzaDev\DgiiSv\Models\Base;
 
 use DazzaDev\DgiiSv\Models\Body\AdditionalInfo;
-use DazzaDev\DgiiSv\Models\Body\OtherDocument;
+use DazzaDev\DgiiSv\Models\Body\OtherDocument\OtherDocument;
 use DazzaDev\DgiiSv\Models\Body\RelatedDocument;
+use DazzaDev\DgiiSv\Models\Body\ThirdPartySale;
 use DazzaDev\DgiiSv\Traits\DocumentTypeTrait;
 use DazzaDev\DgiiSv\Traits\IssuerTrait;
 use DazzaDev\DgiiSv\Traits\ReceiverTrait;
@@ -38,6 +39,11 @@ class Document extends DTEModel
      * @var OtherDocument[]
      */
     private array $otherDocuments = [];
+
+    /**
+     * Third party sale (ventaTercero)
+     */
+    private ?ThirdPartySale $thirdPartySale = null;
 
     /**
      * Document constructor
@@ -88,6 +94,11 @@ class Document extends DTEModel
         // Other documents
         if (isset($data['other_documents'])) {
             $this->setOtherDocuments($data['other_documents']);
+        }
+
+        // Third party sale
+        if (isset($data['third_party_sale'])) {
+            $this->setThirdPartySale($data['third_party_sale']);
         }
     }
 
@@ -182,6 +193,22 @@ class Document extends DTEModel
     }
 
     /**
+     * Get third party sale
+     */
+    public function getThirdPartySale(): ?ThirdPartySale
+    {
+        return $this->thirdPartySale;
+    }
+
+    /**
+     * Set third party sale
+     */
+    public function setThirdPartySale(array|ThirdPartySale $thirdPartySale): void
+    {
+        $this->thirdPartySale = $thirdPartySale instanceof ThirdPartySale ? $thirdPartySale : new ThirdPartySale($thirdPartySale);
+    }
+
+    /**
      * Get array representation
      */
     public function toArray(): array
@@ -199,6 +226,7 @@ class Document extends DTEModel
             'receptor' => $this->getReceiver()?->toArray(),
             'documentoRelacionado' => $this->getRelatedDocument()?->toArray(),
             'otrosDocumentos' => array_map(fn (OtherDocument $doc) => $doc->toArray(), $this->getOtherDocuments()),
+            'ventaTercero' => $this->getThirdPartySale()?->toArray(),
         ];
 
         // Appendices
