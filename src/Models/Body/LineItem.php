@@ -62,6 +62,68 @@ class LineItem
     private array $taxes = [];
 
     /**
+     * N° de ítem (numItem)
+     */
+    private int $itemNumber = 1;
+
+    /**
+     * Tipo de ítem (tipoItem)
+     */
+    private int $itemType = 1;
+
+    /**
+     * Número de documento relacionado (numeroDocumento)
+     */
+    private ?string $relatedDocumentNumber = null;
+
+    /**
+     * Unidad de medida (uniMedida)
+     */
+    private int $unitMeasure = 99;
+
+    /**
+     * Código del tributo especial (codTributo)
+     */
+    private ?string $tributeCode = null;
+
+    /**
+     * Códigos de tributos (tributos)
+     *
+     * @var string[]|null
+     */
+    private ?array $tributes = null;
+
+    /**
+     * Precio sugerido de venta (psv)
+     */
+    private float $suggestedSalePrice = 0.0;
+
+    /**
+     * No Gravado (noGravado)
+     */
+    private float $nonTaxable = 0.0;
+
+    /**
+     * Ventas no sujetas (ventaNoSuj)
+     */
+    private float $saleNotSubject = 0.0;
+
+    /**
+     * Ventas exentas (ventaExenta)
+     */
+    private float $saleExempt = 0.0;
+
+    /**
+     * Ventas gravadas (ventaGravada)
+     */
+    private float $saleTaxed = 0.0;
+
+    /**
+     * IVA por ítem (ivaItem)
+     */
+    private float $vatItem = 0.0;
+
+    /**
      * LineItem constructor
      */
     public function __construct(array $data = [])
@@ -70,36 +132,21 @@ class LineItem
     }
 
     /**
-     * Initialize LineItem with data
+     * Initialize line item data
      */
     private function initialize(array $data): void
     {
-        $this->setCode($data['code']);
-        $this->setAuxiliaryCode($data['auxiliary_code']);
-        $this->setDescription($data['description']);
-        $this->setUnit($data['unit']);
-        $this->setQuantity($data['quantity']);
-        $this->setUnitPrice($data['unit_price']);
-
-        // Set unit price without subsidy if provided
-        if (isset($data['unit_price_without_subsidy'])) {
-            $this->setUnitPriceWithoutSubsidy($data['unit_price_without_subsidy']);
+        if (empty($data)) {
+            return;
         }
 
-        // Set discount if provided
-        if (isset($data['discount'])) {
-            $this->setDiscount($data['discount']);
+        if (isset($data['code'])) {
+            $this->setCode($data['code']);
         }
 
-        // Set total price without tax
-        $this->setTotalPriceWithoutTax($data['total_price_without_tax']);
-
-        // Set additional info if provided
-        if (isset($data['additional_info'])) {
-            $this->setAdditionalInfo($data['additional_info']);
+        if (isset($data['auxiliary_code'])) {
+            $this->setAuxiliaryCode($data['auxiliary_code']);
         }
-
-        $this->setTaxes($data['taxes']);
     }
 
     /**
@@ -252,25 +299,6 @@ class LineItem
     public function getAdditionalInfo(): array
     {
         return $this->additionalInfo;
-    }
-
-    /**
-     * Set additional information
-     */
-    public function setAdditionalInfo(array $additionalInfo): void
-    {
-        $this->additionalInfo = [];
-        foreach ($additionalInfo as $info) {
-            $this->addAdditionalInfo($info);
-        }
-    }
-
-    /**
-     * Add additional information
-     */
-    public function addAdditionalInfo(array|AdditionalInfo $info): void
-    {
-        $this->additionalInfo[] = $info instanceof AdditionalInfo ? $info : new AdditionalInfo($info);
     }
 
     /**
