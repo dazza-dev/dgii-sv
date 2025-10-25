@@ -22,11 +22,6 @@ class Summary
     public float $totalDiscount = 0.0;
 
     /**
-     * Reimbursement information
-     */
-    public ?Reimbursement $reimbursement = null;
-
-    /**
      * Array of taxes
      */
     public array $taxes = [];
@@ -68,10 +63,6 @@ class Summary
 
         if (isset($data['total_discount'])) {
             $this->setTotalDiscount($data['total_discount']);
-        }
-
-        if (isset($data['reimbursement'])) {
-            $this->setReimbursement($data['reimbursement']);
         }
 
         if (isset($data['taxes']) && is_array($data['taxes'])) {
@@ -135,32 +126,6 @@ class Summary
     public function setTotalDiscount(float $totalDiscount): void
     {
         $this->totalDiscount = $totalDiscount;
-    }
-
-    /**
-     * Get reimbursement information
-     */
-    public function getReimbursement(): ?Reimbursement
-    {
-        return $this->reimbursement;
-    }
-
-    /**
-     * Set reimbursement information
-     */
-    public function setReimbursement(array|Reimbursement|null $reimbursement): void
-    {
-        if ($reimbursement === null) {
-            $this->reimbursement = null;
-
-            return;
-        }
-
-        if (is_array($reimbursement)) {
-            $this->reimbursement = new Reimbursement($reimbursement);
-        } else {
-            $this->reimbursement = $reimbursement;
-        }
     }
 
     /**
@@ -235,7 +200,6 @@ class Summary
             'subtotal' => $this->getSubtotal(),
             'total_subsidy' => $this->getTotalSubsidy(),
             'total_discount' => $this->getTotalDiscount(),
-            'reimbursement' => $this->getReimbursement()?->toArray(),
             'taxes' => array_map(fn (Tax $tax) => $tax->toArray(), $this->getTaxes()),
             'tip' => $this->getTip(),
             'total' => $this->getTotal(),
