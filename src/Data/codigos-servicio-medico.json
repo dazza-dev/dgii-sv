@@ -1,0 +1,26 @@
+[
+  {
+    "code": 1,
+    "name": "Cirugía"
+  },
+  {
+    "code": 2,
+    "name": "Operación"
+  },
+  {
+    "code": 3,
+    "name": "Tratamiento médico"
+  },
+  {
+    "code": 4,
+    "name": "Cirugía Instituto salvadoreño de Bienestar Magisterial"
+  },
+  {
+    "code": 5,
+    "name": "Operación Instituto Salvadoreño de Bienestar Magisterial"
+  },
+  {
+    "code": 6,
+    "name": "Tratamiento médico Instituto Salvadoreño de Bienestar Magisterial"
+  }
+]

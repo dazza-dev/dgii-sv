@@ -1,0 +1,46 @@
+[
+    {
+        "code": "01",
+        "name": "EXW- En fabrica"
+    },
+    {
+        "code": "02",
+        "name": "FCA- Libre transportista"
+    },
+    {
+        "code": "03",
+        "name": "CPT- Transporte pagado hasta"
+    },
+    {
+        "code": "04",
+        "name": "CIP- Transporte y seguro pagado hasta"
+    },
+    {
+        "code": "05",
+        "name": "DAP- Entrega en el lugar"
+    },
+    {
+        "code": "06",
+        "name": "DPU- Entregado en el lugar descargado"
+    },
+    {
+        "code": "07",
+        "name": "DDP- Entrega con impuestos pagados"
+    },
+    {
+        "code": "08",
+        "name": "FAS- Libre al costado del buque"
+    },
+    {
+        "code": "09",
+        "name": "FOB- Libre a bordo"
+    },
+    {
+        "code": "10",
+        "name": "CFR- Costo y flete"
+    },
+    {
+        "code": "11",
+        "name": "CIF- Costo seguro y flete"
+    }
+]

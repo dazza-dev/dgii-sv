@@ -1,0 +1,18 @@
+[
+  {
+    "code": 1,
+    "name": "Emisor"
+  },
+  {
+    "code": 2,
+    "name": "Receptor"
+  },
+  {
+    "code": 3,
+    "name": "Médico (solo aplica para contribuyentes obligados a la presentación de F-958)"
+  },
+  {
+    "code": 4,
+    "name": "Transporte (solo aplica para Factura de exportación)"
+  }
+]

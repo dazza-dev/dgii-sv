@@ -1,0 +1,14 @@
+[
+  {
+    "code": 1,
+    "name": "Efectivo"
+  },
+  {
+    "code": 2,
+    "name": "Bien"
+  },
+  {
+    "code": 3,
+    "name": "Servicio"
+  }
+]

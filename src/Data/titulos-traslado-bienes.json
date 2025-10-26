@@ -1,0 +1,22 @@
+[
+  {
+    "code": "01",
+    "name": "Depósito"
+  },
+  {
+    "code": "02",
+    "name": "Propiedad"
+  },
+  {
+    "code": "03",
+    "name": "Consignación"
+  },
+  {
+    "code": "04",
+    "name": "Traslado"
+  },
+  {
+    "code": "05",
+    "name": "Otros"
+  }
+]

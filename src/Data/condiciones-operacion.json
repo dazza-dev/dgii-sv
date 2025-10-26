@@ -1,0 +1,14 @@
+[
+  {
+    "code": 1,
+    "name": "Contado"
+  },
+  {
+    "code": 2,
+    "name": "A crédito"
+  },
+  {
+    "code": 3,
+    "name": "Otro"
+  }
+]

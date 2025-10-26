@@ -1,0 +1,42 @@
+{
+  "name": "dazza-dev/dgii-sv",
+  "description": "Paquete para generar, firmar y enviar documentos electrónicos (Factura, Guía de remisión, Nota crédito, Nota débito y Comprobante de retención) al DTE (El Salvador).",
+  "keywords": [
+    "dgii",
+    "dte",
+    "firmar dte",
+    "factura electrónica",
+    "salvador"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.0",
+    "dazza-dev/dgii-sv-sender": "^1.0",
+    "dazza-dev/dgii-sv-signer": "^1.0",
+    "luecano/numero-a-letras": "^3.0",
+    "ramsey/uuid": "^4.9"
+  },
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "optimize-autoloader": true
+  },
+  "minimum-stability": "stable",
+  "authors": [
+    {
+      "name": "Andres Daza",
+      "email": "adaza90@outlook.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "DazzaDev\\DgiiSv\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "DazzaDev\\DgiiSv\\Tests\\": "tests/"
+    }
+  }
+}

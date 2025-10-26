@@ -1,0 +1,26 @@
+[
+  {
+    "code": 1,
+    "name": "TERRESTRE"
+  },
+  {
+    "code": 2,
+    "name": "AÉREO"
+  },
+  {
+    "code": 3,
+    "name": "MARÍTIMO"
+  },
+  {
+    "code": 4,
+    "name": "FÉRREO"
+  },
+  {
+    "code": 5,
+    "name": "MULTIMODAL"
+  },
+  {
+    "code": 6,
+    "name": "CORREO"
+  }
+]
