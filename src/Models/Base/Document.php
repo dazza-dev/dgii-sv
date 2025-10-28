@@ -504,7 +504,7 @@ class Document extends DTEModel
         $document['resumen']['totalLetras'] = $this->getTotalInWords();
 
         // Payments
-        $document['resumen']['pagos'] = array_map(fn (Payment $payment) => $payment->toArray(), $this->getPayments());
+        $document['resumen']['pagos'] = array_map(fn (Payment $payment) => $payment->toArray(), $this->getPayments() ?? []);
 
         // Appendices
         if (! empty($this->getAdditionalInfo())) {

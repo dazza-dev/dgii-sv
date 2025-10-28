@@ -65,6 +65,11 @@ class Summary
     public float $ivaRetention = 0.0;
 
     /**
+     * IVA Withheld
+     */
+    public float $ivaWithheld = 0.0;
+
+    /**
      * ReteRenta
      */
     public float $reteRenta = 0.0;
@@ -167,6 +172,10 @@ class Summary
 
         if (isset($data['iva_retention'])) {
             $this->setIvaRetention($data['iva_retention']);
+        }
+
+        if (isset($data['iva_withheld'])) {
+            $this->setIvaWithheld($data['iva_withheld']);
         }
 
         if (isset($data['rete_renta'])) {
@@ -379,6 +388,22 @@ class Summary
     }
 
     /**
+     * Get iva withheld
+     */
+    public function getIvaWithheld(): float
+    {
+        return $this->ivaWithheld;
+    }
+
+    /**
+     * Set iva withheld
+     */
+    public function setIvaWithheld(float $ivaWithheld): void
+    {
+        $this->ivaWithheld = $ivaWithheld;
+    }
+
+    /**
      * Get rete renta
      */
     public function getReteRenta(): float
@@ -533,6 +558,7 @@ class Summary
             'totalDescu' => $this->getTotalDiscount(),
             'tributos' => $this->getTaxes(),
             'subTotal' => $this->getSubtotal(),
+            'ivaPerci1' => $this->getIvaWithheld(),
             'ivaRete1' => $this->getIvaRetention(),
             'reteRenta' => $this->getReteRenta(),
             'montoTotalOperacion' => $this->getTotal(),

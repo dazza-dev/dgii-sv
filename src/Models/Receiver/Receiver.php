@@ -21,7 +21,7 @@ class Receiver
     /**
      * Identification type
      */
-    private IdentificationType $identificationType;
+    private ?IdentificationType $identificationType = null;
 
     /**
      * Issuer constructor
@@ -76,7 +76,7 @@ class Receiver
     /**
      * Get NIT
      */
-    public function getIdentificationType(): IdentificationType
+    public function getIdentificationType(): ?IdentificationType
     {
         return $this->identificationType;
     }
@@ -97,7 +97,7 @@ class Receiver
     public function toArray(): array
     {
         $data = [
-            'tipoDocumento' => $this->getIdentificationType()->getCode(),
+            'tipoDocumento' => $this->getIdentificationType()?->getCode(),
             'numDocumento' => $this->getIdentificationNumber(),
             'nrc' => $this->getNrc(),
             'nombre' => $this->getName(),
