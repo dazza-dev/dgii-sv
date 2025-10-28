@@ -454,13 +454,13 @@ class Document extends DTEModel
     /**
      * Get total in words
      */
-    public function getTotalInWords($amount, $currency): ?string
+    public function getTotalInWords(): ?string
     {
-        if ($amount === 0) {
+        if ($this->getSummary()->getTotal() === 0) {
             return null;
         }
 
-        return (new NumeroALetras)->toMoney($amount, 2, $currency);
+        return (new NumeroALetras)->toMoney($this->getSummary()->getTotal(), 2, $this->getCurrency());
     }
 
     /**
@@ -501,10 +501,7 @@ class Document extends DTEModel
         ];
 
         // Total in words
-        $document['resumen']['totalLetras'] = $this->getTotalInWords(
-            $this->getSummary()->getTotal(),
-            $this->getCurrency()
-        );
+        $document['resumen']['totalLetras'] = $this->getTotalInWords();
 
         // Payments
         $document['resumen']['pagos'] = array_map(fn (Payment $payment) => $payment->toArray(), $this->getPayments());
