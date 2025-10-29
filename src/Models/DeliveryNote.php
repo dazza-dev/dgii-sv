@@ -32,10 +32,8 @@ class DeliveryNote extends Document
         unset($document['otrosDocumentos']);
         unset($document['extension']['placaVehiculo']);
 
-        //
         // Remove Receptor fields
         $document['receptor']['nombreComercial'] = $this->getReceiver()->getName();
-        // $document['receptor']['bienTitulo'] = $this->getReceiver()->getGoodsTitle();
 
         // Remove cuerpoDocumento fields
         foreach ($document['cuerpoDocumento'] as $key => $item) {

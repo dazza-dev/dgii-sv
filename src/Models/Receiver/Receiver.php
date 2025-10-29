@@ -4,6 +4,7 @@ namespace DazzaDev\DgiiSv\Models\Receiver;
 
 use DazzaDev\DgiiSv\DataLoader;
 use DazzaDev\DgiiSv\Models\Base\Activity;
+use DazzaDev\DgiiSv\Models\Base\DeliveryPurpose;
 use DazzaDev\DgiiSv\Models\Base\IdentificationType;
 use DazzaDev\DgiiSv\Models\Geography\Address;
 use DazzaDev\DgiiSv\Traits\ActivityTrait;
@@ -22,6 +23,11 @@ class Receiver
      * Identification type
      */
     private ?IdentificationType $identificationType = null;
+
+    /**
+     * Delivery purpose
+     */
+    private ?DeliveryPurpose $deliveryPurpose = null;
 
     /**
      * Issuer constructor
@@ -71,6 +77,10 @@ class Receiver
         if (isset($data['activity'])) {
             $this->setActivity($data['activity']);
         }
+
+        if (isset($data['delivery_purpose'])) {
+            $this->setDeliveryPurpose($data['delivery_purpose']);
+        }
     }
 
     /**
@@ -89,6 +99,24 @@ class Receiver
         $identificationType = (new DataLoader('tipos-identificacion'))->getByCode($identificationTypeCode);
 
         $this->identificationType = new IdentificationType($identificationType);
+    }
+
+    /**
+     * Get delivery purpose
+     */
+    public function getDeliveryPurpose(): ?DeliveryPurpose
+    {
+        return $this->deliveryPurpose;
+    }
+
+    /**
+     * Set delivery purpose
+     */
+    public function setDeliveryPurpose(string $deliveryPurposeCode): void
+    {
+        $deliveryPurpose = (new DataLoader('titulos-traslado-bienes'))->getByCode($deliveryPurposeCode);
+
+        $this->deliveryPurpose = new DeliveryPurpose($deliveryPurpose);
     }
 
     /**
@@ -113,6 +141,11 @@ class Receiver
         // Add activity data if available
         if ($this->activity instanceof Activity) {
             $data = array_merge($data, $this->activity->toArray());
+        }
+
+        // Add delivery purpose data if available
+        if ($this->deliveryPurpose instanceof DeliveryPurpose) {
+            $data['bienTitulo'] = $this->getDeliveryPurpose()?->getCode();
         }
 
         return $data;
