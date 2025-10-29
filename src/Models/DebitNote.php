@@ -61,16 +61,6 @@ class DebitNote extends Document
         unset($document['resumen']['totalPagar']);
         $document['resumen']['ivaPerci1'] = $this->getSummary()->getIvaWithheld();
 
-        /*"observaciones":[
-        "Campo #/cuerpoDocumento/0/numeroDocumento contiene un valor inválido",
-        "Campo #/cuerpoDocumento/1/numeroDocumento contiene un valor inválido",
-        "Campo #/documentoRelacionado contiene un valor inválido",
-        "Campo codEstable no esta permitido en #/emisor",
-        "Campo codPuntoVenta no esta permitido en #/emisor",
-        "Campo codEstableMH no esta permitido en #/emisor",
-        "Campo codPuntoVentaMH no esta permitido en #/emisor"
-        ]}*/
-
         return $document;
     }
 }
