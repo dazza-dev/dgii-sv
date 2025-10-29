@@ -47,7 +47,7 @@ class Document extends DTEModel
     /**
      * Related document (documentoRelacionado)
      */
-    private ?RelatedDocument $relatedDocument = null;
+    private ?array $relatedDocuments = null;
 
     /**
      * Other documents (otrosDocumentos)
@@ -149,8 +149,8 @@ class Document extends DTEModel
         }
 
         // Related document
-        if (isset($data['related_document'])) {
-            $this->setRelatedDocument($data['related_document']);
+        if (isset($data['related_documents'])) {
+            $this->setRelatedDocuments($data['related_documents']);
         }
 
         // Other documents
@@ -321,17 +321,27 @@ class Document extends DTEModel
     /**
      * Get related document
      */
-    public function getRelatedDocument(): ?RelatedDocument
+    public function getRelatedDocuments(): ?array
     {
-        return $this->relatedDocument;
+        return $this->relatedDocuments;
     }
 
     /**
      * Set related document
      */
-    public function setRelatedDocument(array|RelatedDocument $relatedDocument): void
+    public function setRelatedDocuments(array $relatedDocuments): void
     {
-        $this->relatedDocument = $relatedDocument instanceof RelatedDocument ? $relatedDocument : new RelatedDocument($relatedDocument);
+        foreach ($relatedDocuments as $relatedDocument) {
+            $this->addRelatedDocument($relatedDocument);
+        }
+    }
+
+    /**
+     * Set related document
+     */
+    public function addRelatedDocument(array|RelatedDocument $relatedDocument): void
+    {
+        $this->relatedDocuments[] = $relatedDocument instanceof RelatedDocument ? $relatedDocument : new RelatedDocument($relatedDocument);
     }
 
     /**
@@ -488,11 +498,18 @@ class Document extends DTEModel
             $otherDocuments = array_map(fn (OtherDocument $doc) => $doc->toArray(), $this->getOtherDocuments());
         }
 
+        // Related Documents
+        $relatedDocuments = null;
+        if (! empty($this->getRelatedDocuments())) {
+            $relatedDocuments = array_map(fn (RelatedDocument $doc) => $doc->toArray(), $this->getRelatedDocuments());
+        }
+
+        //
         $document = [
             'identificacion' => $identification,
             'emisor' => $this->getIssuer()?->toArray(),
             'receptor' => $this->getReceiver()?->toArray(),
-            'documentoRelacionado' => $this->getRelatedDocument()?->toArray(),
+            'documentoRelacionado' => $relatedDocuments,
             'otrosDocumentos' => $otherDocuments,
             'ventaTercero' => $this->getThirdPartySale()?->toArray(),
             'cuerpoDocumento' => array_map(fn (LineItem $lineItem) => $lineItem->toArray(), $this->getLineItems()),
