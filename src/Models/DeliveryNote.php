@@ -5,19 +5,19 @@ namespace DazzaDev\DgiiSv\Models;
 use DazzaDev\DgiiSv\Models\Base\Document;
 use DazzaDev\DgiiSv\Traits\JsonTrait;
 
-class DebitNote extends Document
+class DeliveryNote extends Document
 {
     use JsonTrait;
 
     /**
-     * DebitNote constructor
+     * DeliveryNote constructor
      */
     public function __construct(array $data = [])
     {
-        $this->setDocumentType('06');
+        $this->setDocumentType('04');
         $this->setVersion(3);
 
-        // Initialize debit note data
+        // Initialize delivery note data
         parent::__construct($data);
     }
 
@@ -32,17 +32,10 @@ class DebitNote extends Document
         unset($document['otrosDocumentos']);
         unset($document['extension']['placaVehiculo']);
 
-        // Remove codEstableMH and codEstable
-        unset($document['emisor']['codEstableMH']);
-        unset($document['emisor']['codEstable']);
-        unset($document['emisor']['codPuntoVentaMH']);
-        unset($document['emisor']['codPuntoVenta']);
-
+        //
         // Remove Receptor fields
-        unset($document['receptor']['tipoDocumento']);
-        unset($document['receptor']['numDocumento']);
-        $document['receptor']['nit'] = $this->getReceiver()->getIdentificationNumber();
         $document['receptor']['nombreComercial'] = $this->getReceiver()->getName();
+        // $document['receptor']['bienTitulo'] = $this->getReceiver()->getGoodsTitle();
 
         // Remove cuerpoDocumento fields
         foreach ($document['cuerpoDocumento'] as $key => $item) {
@@ -52,13 +45,15 @@ class DebitNote extends Document
         }
 
         // Remove resumen fields
+        unset($document['resumen']['totalIva']);
+        unset($document['resumen']['ivaRete1']);
+        unset($document['resumen']['reteRenta']);
         unset($document['resumen']['pagos']);
+        unset($document['resumen']['numPagoElectronico']);
         unset($document['resumen']['totalNoGravado']);
         unset($document['resumen']['saldoFavor']);
-        unset($document['resumen']['totalIva']);
-        unset($document['resumen']['porcentajeDescuento']);
         unset($document['resumen']['totalPagar']);
-        $document['resumen']['ivaPerci1'] = $this->getSummary()->getIvaWithheld();
+        unset($document['resumen']['condicionOperacion']);
 
         return $document;
     }
