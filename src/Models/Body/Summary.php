@@ -558,7 +558,6 @@ class Summary
             'totalDescu' => $this->getTotalDiscount(),
             'tributos' => $this->getTaxes(),
             'subTotal' => $this->getSubtotal(),
-            'ivaPerci1' => $this->getIvaWithheld(),
             'ivaRete1' => $this->getIvaRetention(),
             'reteRenta' => $this->getReteRenta(),
             'montoTotalOperacion' => $this->getTotal(),

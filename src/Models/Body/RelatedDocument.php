@@ -2,6 +2,8 @@
 
 namespace DazzaDev\DgiiSv\Models\Body;
 
+use DazzaDev\DgiiSv\DataLoader;
+use DazzaDev\DgiiSv\Models\Base\GenerationType;
 use DazzaDev\DgiiSv\Traits\DocumentTypeTrait;
 
 class RelatedDocument
@@ -9,9 +11,9 @@ class RelatedDocument
     use DocumentTypeTrait;
 
     /**
-     * Generation code
+     * Generation type
      */
-    private ?string $generationCode = null;
+    private ?GenerationType $generationType = null;
 
     /**
      * Document number
@@ -40,8 +42,8 @@ class RelatedDocument
             $this->setDocumentType($data['document_type']);
         }
 
-        if (isset($data['generation_code'])) {
-            $this->setGenerationCode($data['generation_code']);
+        if (isset($data['generation_type'])) {
+            $this->setGenerationType($data['generation_type']);
         }
 
         if (isset($data['document_number'])) {
@@ -54,19 +56,31 @@ class RelatedDocument
     }
 
     /**
-     * Get generation code
+     * Get generation type
      */
-    public function getGenerationCode(): ?string
+    public function getGenerationType(): ?GenerationType
     {
-        return $this->generationCode;
+        return $this->generationType;
     }
 
     /**
-     * Set generation code
+     * Get generation type code
      */
-    public function setGenerationCode(?string $generationCode): void
+    public function getGenerationTypeCode(): ?int
     {
-        $this->generationCode = $generationCode;
+        $code = $this->generationType?->getCode();
+
+        return $code ? (int) $code : null;
+    }
+
+    /**
+     * Set generation type
+     */
+    public function setGenerationType(int|string $generationTypeCode): void
+    {
+        $generationType = (new DataLoader('tipos-generacion-documento'))->getByCode($generationTypeCode);
+
+        $this->generationType = new GenerationType($generationType);
     }
 
     /**
@@ -108,8 +122,8 @@ class RelatedDocument
     {
         return [
             'tipoDocumento' => $this->getDocumentType()?->getCode(),
-            'codigoGeneracion' => $this->getGenerationCode(),
-            'numDocumento' => $this->getDocumentNumber(),
+            'tipoGeneracion' => $this->getGenerationTypeCode(),
+            'numeroDocumento' => $this->getDocumentNumber(),
             'fechaEmision' => $this->getIssueDate(),
         ];
     }

@@ -59,6 +59,7 @@ class CreditNote extends Document
         unset($document['resumen']['totalIva']);
         unset($document['resumen']['porcentajeDescuento']);
         unset($document['resumen']['totalPagar']);
+        $document['resumen']['ivaPerci1'] = $this->getSummary()->getIvaWithheld();
 
         return $document;
     }
