@@ -68,9 +68,13 @@ class ExemptTaxpayerInvoice extends Document
         unset($document['resumen']['saldoFavor']);
         unset($document['resumen']['totalExenta']);
 
+        // Discount
+        $document['resumen']['descu'] = $this->getSummary()->getGlobalDiscount();
+
+        // Observations
+        $document['resumen']['observaciones'] = $this->getSummary()->getObservations() ?? '';
         /*"observaciones":[
             "Campo totalCompra es requerido en #/resumen",
-            "Campo descu es requerido en #/resumen",
             "Campo observaciones es requerido en #/resumen",
             "Campo compra es requerido en #/cuerpoDocumento/0",
             "Campo compra es requerido en #/cuerpoDocumento/1"

@@ -55,6 +55,11 @@ class Summary
     public float $totalDiscount = 0.0;
 
     /**
+     * Global discount amount
+     */
+    public float $globalDiscount = 0.0;
+
+    /**
      * Subtotal amount
      */
     public float $subtotal = 0.0;
@@ -110,6 +115,11 @@ class Summary
     public ?string $electronicPaymentNumber = null;
 
     /**
+     * Observations
+     */
+    public ?string $observations = null;
+
+    /**
      * Constructor
      */
     public function __construct(array $data = [])
@@ -162,6 +172,10 @@ class Summary
             $this->setTotalDiscount($data['total_discount']);
         }
 
+        if (isset($data['global_discount'])) {
+            $this->setGlobalDiscount($data['global_discount']);
+        }
+
         if (isset($data['taxes'])) {
             $this->setTaxes($data['taxes']);
         }
@@ -208,6 +222,10 @@ class Summary
 
         if (isset($data['electronic_payment_number'])) {
             $this->setElectronicPaymentNumber($data['electronic_payment_number']);
+        }
+
+        if (isset($data['observations'])) {
+            $this->setObservations($data['observations']);
         }
     }
 
@@ -353,6 +371,22 @@ class Summary
     public function setTotalDiscount(float $totalDiscount): void
     {
         $this->totalDiscount = $totalDiscount;
+    }
+
+    /**
+     * Get global discount
+     */
+    public function getGlobalDiscount(): float
+    {
+        return $this->globalDiscount;
+    }
+
+    /**
+     * Set global discount
+     */
+    public function setGlobalDiscount(float $globalDiscount): void
+    {
+        $this->globalDiscount = $globalDiscount;
     }
 
     /**
@@ -539,6 +573,22 @@ class Summary
     public function setElectronicPaymentNumber(?string $electronicPaymentNumber): void
     {
         $this->electronicPaymentNumber = $electronicPaymentNumber;
+    }
+
+    /**
+     * Get observations
+     */
+    public function getObservations(): ?string
+    {
+        return $this->observations;
+    }
+
+    /**
+     * Set observations
+     */
+    public function setObservations(?string $observations): void
+    {
+        $this->observations = $observations;
     }
 
     /**
