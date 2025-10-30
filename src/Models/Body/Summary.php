@@ -100,6 +100,11 @@ class Summary
     public float $totalTax = 0.0;
 
     /**
+     * Total purchase amount
+     */
+    public float $totalPurchase = 0.0;
+
+    /**
      * Balance in favor
      */
     public float $balanceInFavor = 0.0;
@@ -210,6 +215,10 @@ class Summary
 
         if (isset($data['total_tax'])) {
             $this->setTotalTax($data['total_tax']);
+        }
+
+        if (isset($data['total_purchase'])) {
+            $this->setTotalPurchase($data['total_purchase']);
         }
 
         if (isset($data['balance_in_favor'])) {
@@ -515,6 +524,22 @@ class Summary
     public function setTotalTax(float $totalTax): void
     {
         $this->totalTax = $totalTax;
+    }
+
+    /**
+     * Get total purchase
+     */
+    public function getTotalPurchase(): float
+    {
+        return $this->totalPurchase;
+    }
+
+    /**
+     * Set total purchase
+     */
+    public function setTotalPurchase(float $totalPurchase): void
+    {
+        $this->totalPurchase = $totalPurchase;
     }
 
     /**

@@ -50,6 +50,7 @@ class ExemptTaxpayerInvoice extends Document
             unset($document['cuerpoDocumento'][$key]['psv']);
             unset($document['cuerpoDocumento'][$key]['codTributo']);
             unset($document['cuerpoDocumento'][$key]['numeroDocumento']);
+            $document['cuerpoDocumento'][$key]['compra'] = $this->getLineItems()[$key]->getPurchase();
         }
 
         // Remove summary fields
@@ -73,12 +74,9 @@ class ExemptTaxpayerInvoice extends Document
 
         // Observations
         $document['resumen']['observaciones'] = $this->getSummary()->getObservations() ?? '';
-        /*"observaciones":[
-            "Campo totalCompra es requerido en #/resumen",
-            "Campo observaciones es requerido en #/resumen",
-            "Campo compra es requerido en #/cuerpoDocumento/0",
-            "Campo compra es requerido en #/cuerpoDocumento/1"
-        ]}*/
+
+        // Total purchase
+        $document['resumen']['totalCompra'] = $this->getSummary()->getTotalPurchase();
 
         return $document;
     }

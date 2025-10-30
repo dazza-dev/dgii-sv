@@ -56,6 +56,11 @@ class LineItem
     private float $discount = 0.0;
 
     /**
+     * Purchase (compra)
+     */
+    private float $purchase = 0.0;
+
+    /**
      * Ventas no sujetas (ventaNoSuj)
      */
     private float $saleNotSubject = 0.0;
@@ -132,6 +137,10 @@ class LineItem
 
         if (isset($data['unit_price'])) {
             $this->setUnitPrice((float) $data['unit_price']);
+        }
+
+        if (isset($data['purchase'])) {
+            $this->setPurchase((float) $data['purchase']);
         }
 
         if (isset($data['discount'])) {
@@ -301,6 +310,22 @@ class LineItem
     public function setUnitPrice(float $unitPrice): void
     {
         $this->unitPrice = $unitPrice;
+    }
+
+    /**
+     * Get purchase
+     */
+    public function getPurchase(): float
+    {
+        return $this->purchase;
+    }
+
+    /**
+     * Set purchase
+     */
+    public function setPurchase(float $purchase): void
+    {
+        $this->purchase = $purchase;
     }
 
     /**
