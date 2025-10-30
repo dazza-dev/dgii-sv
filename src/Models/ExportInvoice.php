@@ -26,6 +26,8 @@ class ExportInvoice extends Document
      */
     public function toArray(): array
     {
-        return parent::toArray();
+        $document = parent::toArray();
+
+        return $document;
     }
 }
