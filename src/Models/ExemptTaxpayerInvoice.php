@@ -34,12 +34,16 @@ class ExemptTaxpayerInvoice extends Document
         unset($document['documentoRelacionado']);
         unset($document['extension']);
 
+        // Remove receptor field
+        $document['sujetoExcluido'] = $document['receptor'];
+        unset($document['receptor']);
+        unset($document['sujetoExcluido']['nrc']);
+
         // Remove cuerpoDocumento fields
         foreach ($document['cuerpoDocumento'] as $key => $item) {
             unset($document['cuerpoDocumento'][$key]['ventaGravada']);
             unset($document['cuerpoDocumento'][$key]['ivaItem']);
             unset($document['cuerpoDocumento'][$key]['ventaNoSuj']);
-
             unset($document['cuerpoDocumento'][$key]['ventaExenta']);
             unset($document['cuerpoDocumento'][$key]['tributos']);
             unset($document['cuerpoDocumento'][$key]['noGravado']);
@@ -65,8 +69,6 @@ class ExemptTaxpayerInvoice extends Document
         unset($document['resumen']['totalExenta']);
 
         /*"observaciones":[
-            "Campo sujetoExcluido es requerido en #",
-            "Campo receptor no esta permitido en #",
             "Campo totalCompra es requerido en #/resumen",
             "Campo descu es requerido en #/resumen",
             "Campo observaciones es requerido en #/resumen",
