@@ -11,7 +11,7 @@ class InvoiceBuilder extends BaseDocumentBuilder
      */
     protected function createDocument(): Invoice
     {
-        return new Invoice($this->environmentCode, $this->accessKey, $this->documentData);
+        return new Invoice($this->documentData);
     }
 
     /**

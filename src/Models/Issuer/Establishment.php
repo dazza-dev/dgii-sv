@@ -106,10 +106,16 @@ class Establishment
      */
     public function toArray(): array
     {
-        return [
-            'tipoEstablecimiento' => $this->getType()->getCode(),
+        $data = [
             'codEstableMH' => $this->getCode(),
             'codEstable' => $this->getInternalCode(),
         ];
+
+        // Add Establishment Type if available
+        if ($this->getType()) {
+            $data['tipoEstablecimiento'] = $this->getType()->getCode();
+        }
+
+        return $data;
     }
 }

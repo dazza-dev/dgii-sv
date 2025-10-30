@@ -215,10 +215,16 @@ class Issuer
             'nit' => $this->getNit(),
             'nrc' => $this->getNrc(),
             'nombre' => $this->getLegalName(),
-            'nombreComercial' => $this->getTradeName(),
-            'telefono' => $this->getPhone(),
-            'correo' => $this->getEmail(),
         ];
+
+        // Add trade name if available
+        if ($this->getTradeName()) {
+            $data['nombreComercial'] = $this->getTradeName();
+        }
+
+        // Add phone and email if available
+        $data['telefono'] = $this->getPhone();
+        $data['correo'] = $this->getEmail();
 
         // Add address data if available
         if ($this->address instanceof Address) {
