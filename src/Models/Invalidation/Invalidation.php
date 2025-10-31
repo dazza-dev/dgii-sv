@@ -2,12 +2,23 @@
 
 namespace DazzaDev\DgiiSv\Models\Invalidation;
 
+use DazzaDev\CarvajalXmlGenerator\DataLoader;
 use DazzaDev\DgiiSv\Models\Base\DTEModel;
 use DazzaDev\DgiiSv\Traits\IssuerTrait;
 
 class Invalidation extends DTEModel
 {
     use IssuerTrait;
+
+    /**
+     * Invalidation type
+     */
+    private ?InvalidationType $invalidationType = null;
+
+    /**
+     * Invalidation reason
+     */
+    private ?string $invalidationReason = null;
 
     /**
      * Invalidation constructor
@@ -27,6 +38,59 @@ class Invalidation extends DTEModel
         if (empty($data)) {
             return;
         }
+    }
+
+    /**
+     * Get invalidation type
+     */
+    public function getInvalidationType(): ?InvalidationType
+    {
+        return $this->invalidationType;
+    }
+
+    /**
+     * Set invalidation type
+     */
+    public function setInvalidationType(string|int $invalidationTypeCode): void
+    {
+        $invalidationType = (new DataLoader('tipos-invalidacion'))->getByCode($invalidationTypeCode);
+
+        $this->invalidationType = new InvalidationType($invalidationType);
+    }
+
+    /**
+     * Get invalidation code
+     */
+    public function getInvalidationCode(): ?int
+    {
+        $code = $this->getInvalidationType()?->getCode();
+
+        return $code ? (int) $code : null;
+    }
+
+    /**
+     * Set contingency reason
+     */
+    public function setInvalidationReason(string $invalidationReason): void
+    {
+        $this->invalidationReason = $invalidationReason;
+    }
+
+    /**
+     * Get invalidation reason
+     */
+    public function getInvalidationReason(): ?string
+    {
+        return $this->invalidationReason;
+    }
+
+    /**
+     * Get custom invalidation reason
+     */
+    public function getCustomInvalidationReason(): ?string
+    {
+        return $this->getInvalidationReason()
+            ?? $this->getInvalidationType()?->getName();
     }
 
     /**
@@ -62,8 +126,8 @@ class Invalidation extends DTEModel
             ]),
             'emisor' => $this->getInvalidationIssuer(),
             'motivo' => [
-                'tipoAnulacion' => $this->getInvalidationTypeCode(),
-                'motivoAnulacion' => $this->getInvalidationReason(),
+                'tipoAnulacion' => $this->getInvalidationCode(),
+                'motivoAnulacion' => $this->getCustomInvalidationReason(),
             ],
         ];
     }
