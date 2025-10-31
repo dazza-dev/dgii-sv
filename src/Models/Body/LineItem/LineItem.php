@@ -432,7 +432,7 @@ class LineItem
         //
         return [
             'numItem' => $this->getItemNumber(),
-            'tipoItem' => (int) $this->getItemType()?->getCode(),
+            'tipoItem' => $this->getItemTypeCode(),
             'numeroDocumento' => $this->getRelatedDocumentNumber(),
             'cantidad' => $this->getQuantity(),
             'codigo' => $this->getCode(),

@@ -21,6 +21,16 @@ trait ItemTypeTrait
     }
 
     /**
+     * Get item type code
+     */
+    public function getItemTypeCode(): ?int
+    {
+        $code = $this->getItemType()?->getCode();
+
+        return $code ? (int) $code : null;
+    }
+
+    /**
      * Set item type
      */
     public function setItemType(int $itemTypeCode): void

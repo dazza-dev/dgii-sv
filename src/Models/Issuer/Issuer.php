@@ -2,15 +2,20 @@
 
 namespace DazzaDev\DgiiSv\Models\Issuer;
 
+use DazzaDev\DgiiSv\DataLoader;
 use DazzaDev\DgiiSv\Models\Base\Activity;
+use DazzaDev\DgiiSv\Models\Base\CustomsFacility;
+use DazzaDev\DgiiSv\Models\Base\Regime;
 use DazzaDev\DgiiSv\Models\Geography\Address;
 use DazzaDev\DgiiSv\Traits\ActivityTrait;
 use DazzaDev\DgiiSv\Traits\EntityTrait;
+use DazzaDev\DgiiSv\Traits\ItemTypeTrait;
 
 class Issuer
 {
     use ActivityTrait;
     use EntityTrait;
+    use ItemTypeTrait;
 
     /**
      * NIT
@@ -41,6 +46,16 @@ class Issuer
      * Responsible
      */
     private ?Responsible $responsible = null;
+
+    /**
+     * Regime
+     */
+    private ?Regime $regime = null;
+
+    /**
+     * Customs Facility
+     */
+    private ?CustomsFacility $customsFacility = null;
 
     /**
      * Issuer constructor
@@ -101,6 +116,18 @@ class Issuer
 
         if (isset($data['responsible'])) {
             $this->setResponsible($data['responsible']);
+        }
+
+        if (isset($data['regime'])) {
+            $this->setRegime($data['regime']);
+        }
+
+        if (isset($data['item_type'])) {
+            $this->setItemType($data['item_type']);
+        }
+
+        if (isset($data['customs_facility'])) {
+            $this->setCustomsFacility($data['customs_facility']);
         }
     }
 
@@ -204,6 +231,42 @@ class Issuer
     public function setSalePoint(SalePoint|array $salePoint): void
     {
         $this->salePoint = $salePoint instanceof SalePoint ? $salePoint : new SalePoint($salePoint);
+    }
+
+    /**
+     * Get Regime
+     */
+    public function getRegime(): ?Regime
+    {
+        return $this->regime;
+    }
+
+    /**
+     * Set Regime using array or Regime instance
+     */
+    public function setRegime(string|int $regimeCode): void
+    {
+        $regime = (new DataLoader('regimenes'))->getByCode($regimeCode);
+
+        $this->regime = new Regime($regime);
+    }
+
+    /**
+     * Get Customs Facility
+     */
+    public function getCustomsFacility(): ?CustomsFacility
+    {
+        return $this->customsFacility;
+    }
+
+    /**
+     * Set Customs Facility using array or CustomsFacility instance
+     */
+    public function setCustomsFacility(string|int $customsFacilityCode): void
+    {
+        $customsFacility = (new DataLoader('recintos-fiscales'))->getByCode($customsFacilityCode);
+
+        $this->customsFacility = new CustomsFacility($customsFacility);
     }
 
     /**

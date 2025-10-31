@@ -53,10 +53,10 @@ class ExportInvoice extends Document
         $document['receptor']['tipoPersona'] = (int) $this->getReceiver()->getPersonType()?->getCode();
 
         // Emisor
-        /*"Campo tipoItemExpor es requerido en #/emisor",
-            "Campo recintoFiscal es requerido en #/emisor",
-            "Campo regimen es requerido en #/emisor"
-        */
+        $issuer = $this->getIssuer();
+        $document['emisor']['tipoItemExpor'] = $issuer->getItemTypeCode();
+        $document['emisor']['regimen'] = $issuer->getRegime()?->getCode();
+        $document['emisor']['recintoFiscal'] = $issuer->getCustomsFacility()?->getCode();
 
         // Remove cuerpoDocumento fields
         foreach ($document['cuerpoDocumento'] as $key => $item) {
