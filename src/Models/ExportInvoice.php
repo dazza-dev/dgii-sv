@@ -84,18 +84,18 @@ class ExportInvoice extends Document
         unset($document['resumen']['totalExenta']);
 
         // Summary Fields
-        $document['resumen']['descuento'] = $this->getSummary()->getGlobalDiscount();
-        $document['resumen']['flete'] = $this->getSummary()->getFreight();
-        $document['resumen']['seguro'] = $this->getSummary()->getInsurance();
+        $summary = $this->getSummary();
+        $document['resumen']['descuento'] = $summary->getGlobalDiscount();
+        $document['resumen']['flete'] = $summary->getFreight();
+        $document['resumen']['seguro'] = $summary->getInsurance();
+
+        // Incoterm
+        $incoterm = $summary->getIncoterm();
+        $document['resumen']['codIncoterms'] = $incoterm?->getCode();
+        $document['resumen']['descIncoterms'] = $incoterm?->getName();
 
         // Observations
         $document['resumen']['observaciones'] = $this->getSummary()->getObservations() ?? '';
-
-        /*"observaciones":[
-            "Campo codIncoterms es requerido en #/resumen",
-            "Campo descIncoterms es requerido en #/resumen",
-        ]}
-        */
 
         return $document;
     }

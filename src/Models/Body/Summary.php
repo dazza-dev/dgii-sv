@@ -3,6 +3,7 @@
 namespace DazzaDev\DgiiSv\Models\Body;
 
 use DazzaDev\DgiiSv\DataLoader;
+use DazzaDev\DgiiSv\Models\Base\Incoterm;
 use DazzaDev\DgiiSv\Traits\TaxTrait;
 
 class Summary
@@ -125,6 +126,11 @@ class Summary
     public ?OperationCondition $operationCondition = null;
 
     /**
+     * Incoterm
+     */
+    public ?Incoterm $incoterm = null;
+
+    /**
      * Electronic payment number
      */
     public ?string $electronicPaymentNumber = null;
@@ -245,6 +251,10 @@ class Summary
 
         if (isset($data['operation_condition'])) {
             $this->setOperationCondition($data['operation_condition']);
+        }
+
+        if (isset($data['incoterm'])) {
+            $this->setIncoterm($data['incoterm']);
         }
 
         if (isset($data['electronic_payment_number'])) {
@@ -632,6 +642,24 @@ class Summary
         $operationCondition = (new DataLoader('condiciones-operacion'))->getByCode($operationConditionCode);
 
         $this->operationCondition = new OperationCondition($operationCondition);
+    }
+
+    /**
+     * Get incoterm
+     */
+    public function getIncoterm(): ?Incoterm
+    {
+        return $this->incoterm;
+    }
+
+    /**
+     * Set incoterm
+     */
+    public function setIncoterm(int $incotermCode): void
+    {
+        $incoterm = (new DataLoader('incoterms'))->getByCode($incotermCode);
+
+        $this->incoterm = new Incoterm($incoterm);
     }
 
     /**
