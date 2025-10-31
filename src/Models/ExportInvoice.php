@@ -32,6 +32,10 @@ class ExportInvoice extends Document
         unset($document['documentoRelacionado']);
         unset($document['extension']);
 
+        // Identification
+        unset($document['identificacion']['motivoContin']);
+        $document['identificacion']['motivoContigencia'] = $this->getCustomReason();
+
         // Remove Receptor fields
         unset($document['receptor']['codActividad']);
         unset($document['receptor']['nrc']);
@@ -46,9 +50,13 @@ class ExportInvoice extends Document
         $country = $address?->getCountry();
         $document['receptor']['codPais'] = $country?->getCode();
         $document['receptor']['nombrePais'] = $country?->getName();
-
-        // Person Type
         $document['receptor']['tipoPersona'] = (int) $this->getReceiver()->getPersonType()?->getCode();
+
+        // Emisor
+        /*"Campo tipoItemExpor es requerido en #/emisor",
+            "Campo recintoFiscal es requerido en #/emisor",
+            "Campo regimen es requerido en #/emisor"
+        */
 
         // Remove cuerpoDocumento fields
         foreach ($document['cuerpoDocumento'] as $key => $item) {
@@ -62,8 +70,6 @@ class ExportInvoice extends Document
         }
 
         /*"observaciones":[
-            "Campo motivoContigencia es requerido en #/identificacion",
-            "Campo motivoContin no esta permitido en #/identificacion",
             "Campo descuento es requerido en #/resumen",
             "Campo codIncoterms es requerido en #/resumen",
             "Campo descIncoterms es requerido en #/resumen",
@@ -82,9 +88,6 @@ class ExportInvoice extends Document
             "Campo descuGravada no esta permitido en #/resumen",
             "Campo saldoFavor no esta permitido en #/resumen",
             "Campo totalExenta no esta permitido en #/resumen",
-            "Campo tipoItemExpor es requerido en #/emisor",
-            "Campo recintoFiscal es requerido en #/emisor",
-            "Campo regimen es requerido en #/emisor"
         ]}
         */
 
