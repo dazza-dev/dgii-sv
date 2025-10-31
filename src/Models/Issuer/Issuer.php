@@ -6,16 +6,19 @@ use DazzaDev\DgiiSv\DataLoader;
 use DazzaDev\DgiiSv\Models\Base\Activity;
 use DazzaDev\DgiiSv\Models\Base\CustomsFacility;
 use DazzaDev\DgiiSv\Models\Base\Regime;
+use DazzaDev\DgiiSv\Models\Body\Responsible;
 use DazzaDev\DgiiSv\Models\Geography\Address;
 use DazzaDev\DgiiSv\Traits\ActivityTrait;
 use DazzaDev\DgiiSv\Traits\EntityTrait;
 use DazzaDev\DgiiSv\Traits\ItemTypeTrait;
+use DazzaDev\DgiiSv\Traits\ResponsibleTrait;
 
 class Issuer
 {
     use ActivityTrait;
     use EntityTrait;
     use ItemTypeTrait;
+    use ResponsibleTrait;
 
     /**
      * NIT
@@ -41,11 +44,6 @@ class Issuer
      * Sale Point
      */
     private ?SalePoint $salePoint = null;
-
-    /**
-     * Responsible
-     */
-    private ?Responsible $responsible = null;
 
     /**
      * Regime
@@ -193,28 +191,6 @@ class Issuer
     public function setEstablishment(Establishment|array $establishment): void
     {
         $this->establishment = $establishment instanceof Establishment ? $establishment : new Establishment($establishment);
-    }
-
-    /**
-     * Get Responsible
-     */
-    public function getResponsible(): ?Responsible
-    {
-        return $this->responsible;
-    }
-
-    /**
-     * Set Responsible using array or Responsible instance
-     */
-    public function setResponsible(Responsible|array $responsible): void
-    {
-        if ($responsible instanceof Responsible) {
-            $this->responsible = $responsible;
-
-            return;
-        }
-
-        $this->responsible = new Responsible($responsible);
     }
 
     /**

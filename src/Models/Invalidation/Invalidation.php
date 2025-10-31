@@ -5,10 +5,14 @@ namespace DazzaDev\DgiiSv\Models\Invalidation;
 use DazzaDev\CarvajalXmlGenerator\DataLoader;
 use DazzaDev\DgiiSv\Models\Base\DTEModel;
 use DazzaDev\DgiiSv\Traits\IssuerTrait;
+use DazzaDev\DgiiSv\Traits\RequesterTrait;
+use DazzaDev\DgiiSv\Traits\ResponsibleTrait;
 
 class Invalidation extends DTEModel
 {
     use IssuerTrait;
+    use RequesterTrait;
+    use ResponsibleTrait;
 
     /**
      * Invalidation type
@@ -128,7 +132,10 @@ class Invalidation extends DTEModel
             'motivo' => [
                 'tipoAnulacion' => $this->getInvalidationCode(),
                 'motivoAnulacion' => $this->getCustomInvalidationReason(),
+
             ],
+            'requester' => $this->getRequester()->toArray(),
+            'responsible' => $this->getResponsible()->toArray(),
         ];
     }
 }
