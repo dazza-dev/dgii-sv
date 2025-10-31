@@ -1,246 +1,246 @@
 [
   {
-    "code": "EX-11000.000",
+    "code": "EX-1.1000.000",
     "name": "Exportación Definitiva, Exportación Definitiva, Régimen Común"
   },
   {
-    "code": "EX-11040.000",
+    "code": "EX-1.1040.000",
     "name": "Exportación Definitiva, Exportación Definitiva Sustitución de Mercancías, Régimen Común"
   },
   {
-    "code": "EX-11041.020",
+    "code": "EX-1.1041.020",
     "name": "Exportación Definitiva, Exportación Definitiva Proveniente de Franquicia Provisional, Franq. Presidenciales exento de DAI"
   },
   {
-    "code": "EX-11041.021",
+    "code": "EX-1.1041.021",
     "name": "Exportación Definitiva, Exportación Definitiva Proveniente de Franquicia Provisional, Franq. Presidenciales exento de DAI e IVA"
   },
   {
-    "code": "EX-11048.025",
-    "name": "Exportación Definitiva, Exportación Definitiva Proveniente de Franquicia Definitiva, Maquinaria y Equipo LZF- DPA"
+    "code": "EX-1.1048.025",
+    "name": "Exportación Definitiva, Exportación Definitiva Proveniente de Franquicia Definitiva, Maquinaria y Equipo LZF. DPA"
   },
   {
-    "code": "EX-11048.031",
+    "code": "EX-1.1048.031",
     "name": "Exportación Definitiva, Exportación Definitiva Proveniente de Franquicia Definitiva, Distribución Internacional"
   },
   {
-    "code": "EX-11048.032",
-    "name": "Exportación Definitiva, Exportación Definitiva Proveniente, de Franquicia Definitiva, Operaciones Internacionales de Logística"
+    "code": "EX-1.1048.032",
+    "name": "Exportación Definitiva, Exportación Definitiva Proveniente. de Franquicia Definitiva, Operaciones Internacionales de Logística"
   },
   {
-    "code": "EX-11048.033",
+    "code": "EX-1.1048.033",
     "name": "Exportación Definitiva, Exportación Definitiva Proveniente de Franquicia Definitiva, Centro Internacional de llamadas (Call Center)"
   },
   {
-    "code": "EX-11048.034",
+    "code": "EX-1.1048.034",
     "name": "Exportación Definitiva, Exportación Definitiva Proveniente de Franquicia Definitiva, Tecnologías de Información LSI"
   },
   {
-    "code": "EX-11048.035",
+    "code": "EX-1.1048.035",
     "name": "Exportación Definitiva, Exportación Definitiva Proveniente de Franquicia Definitiva, Investigación y Desarrollo LSI"
   },
   {
-    "code": "EX-11048.036",
+    "code": "EX-1.1048.036",
     "name": "Exportación Definitiva, Exportación Definitiva Proveniente de Franquicia Definitiva, Reparación y Mantenimiento de Embarcaciones Marítimas LSI"
   },
   {
-    "code": "EX-11048.037",
+    "code": "EX-1.1048.037",
     "name": "Exportación Definitiva, Exportación Definitiva Proveniente de Franquicia Definitiva, Reparación y Mantenimiento de Aeronaves LSI"
   },
   {
-    "code": "EX-11048.038",
+    "code": "EX-1.1048.038",
     "name": "Exportación Definitiva, Exportación Definitiva Proveniente de Franquicia Definitiva, Procesos Empresariales LSI"
   },
   {
-    "code": "EX-11048.039",
-    "name": "Exportación Definitiva, Exportación Definitiva Proveniente de Franquicia Definitiva, Servicios Empresariales LSI"
+    "code": "EX-1.1048.039",
+    "name": "Exportación Definitiva, Exportación Definitiva Proveniente de Franquicia Definitiva, Servicios Medico-Hospitalarios LSI"
   },
   {
-    "code": "EX-11048.040",
+    "code": "EX-1.1048.040",
     "name": "Exportación Definitiva, Exportación Definitiva Proveniente de Franquicia Definitiva, Servicios Financieros Internacionales LSI"
   },
   {
-    "code": "EX-11048.043",
+    "code": "EX-1.1048.043",
     "name": "Exportación Definitiva, Exportación Definitiva Proveniente de Franquicia Definitiva, Reparación y Mantenimiento de Contenedores LSI"
   },
   {
-    "code": "EX-11048.044",
+    "code": "EX-1.1048.044",
     "name": "Exportación Definitiva, Exportación Definitiva Proveniente de Franquicia Definitiva, Reparación de Equipos Tecnológicos LSI"
   },
   {
-    "code": "EX-11048.054",
+    "code": "EX-1.1048.054",
     "name": "Exportación Definitiva, Exportación Definitiva Proveniente de Franquicia Definitiva, Atención Ancianos y Convalecientes LSI"
   },
   {
-    "code": "EX-11048.055",
+    "code": "EX-1.1048.055",
     "name": "Exportación Definitiva, Exportación Definitiva Proveniente de Franquicia Definitiva, Telemedicina LSI"
   },
   {
-    "code": "EX-11048.056",
+    "code": "EX-1.1048.056",
     "name": "Exportación Definitiva, Exportación Definitiva Proveniente de Franquicia Definitiva, Cinematografía LSI"
   },
   {
-    "code": "EX-11052.000",
+    "code": "EX-1.1052.000",
     "name": "Exportación Definitiva, Exportación Definitiva de DPA con origen en Compras Locales, Régimen Común"
   },
   {
-    "code": "EX-11054.000",
+    "code": "EX-1.1054.000",
     "name": "Exportación Definitiva, Exportación Definitiva de Zona Franca con origen en Compras Locales, Régimen Común"
   },
   {
-    "code": "EX-11100.000",
+    "code": "EX-1.1100.000",
     "name": "Exportación Definitiva, Exportación Definitiva de Envíos de Socorro, Régimen Común"
   },
   {
-    "code": "EX-11200.000",
+    "code": "EX-1.1200.000",
     "name": "Exportación Definitiva, Exportación Definitiva de Envíos Postales, Régimen Común"
   },
   {
-    "code": "EX-11300.000",
+    "code": "EX-1.1300.000",
     "name": "Exportación Definitiva, Exportación Definitiva Envíos que requieren despacho urgente, Régimen Común"
   },
   {
-    "code": "EX-11400.000",
+    "code": "EX-1.1400.000",
     "name": "Exportación Definitiva, Exportación Definitiva Courier, Régimen Común"
   },
   {
-    "code": "EX-11400.011",
+    "code": "EX-1.1400.011",
     "name": "Exportación Definitiva, Exportación Definitiva Courier, Muestras Sin Valor Comercial"
   },
   {
-    "code": "EX-11400.012",
+    "code": "EX-1.1400.012",
     "name": "Exportación Definitiva, Exportación Definitiva Courier, Material Publicitario"
   },
   {
-    "code": "EX-11400.017",
+    "code": "EX-1.1400.017",
     "name": "Exportación Definitiva, Exportación Definitiva Courier, Declaración de Documentos"
   },
   {
-    "code": "EX-11500.000",
+    "code": "EX-1.1500.000",
     "name": "Exportación Definitiva, Exportación Definitiva Menaje de casa, Régimen Común"
   },
   {
-    "code": "EX-22100.000",
+    "code": "EX-2.2100.000",
     "name": "Exportación Temporal, Exportación Temporal para Perfeccionamiento Pasivo, Régimen Común"
   },
   {
-    "code": "EX-22200.000",
+    "code": "EX-2.2200.000",
     "name": "Exportación Temporal, Exportación Temporal con Reimportación en el mismo estado, Régimen Común"
   },
   {
-    "code": "EX-22400.000",
+    "code": "EX-2.2400.000",
     "name": "Traslados Definitivos"
   },
   {
-    "code": "EX-33050.000",
+    "code": "EX-3.3050.000",
     "name": "Re-Exportación, Reexportación Proveniente de Importación Temporal, Régimen Común"
   },
   {
-    "code": "EX-33051.000",
+    "code": "EX-3.3051.000",
     "name": "Re-Exportación, Reexportación Proveniente de Tiendas Libres, Régimen Común"
   },
   {
-    "code": "EX-33052.000",
+    "code": "EX-3.3052.000",
     "name": "Re-Exportación, Reexportación Proveniente de Admisión Temporal para Perfeccionamiento Activo, Régimen Común"
   },
   {
-    "code": "EX-33053.000",
+    "code": "EX-3.3053.000",
     "name": "Re-Exportación, Reexportación Proveniente de Admisión Temporal, Régimen Común"
   },
   {
-    "code": "EX-33054.000",
+    "code": "EX-3.3054.000",
     "name": "Re-Exportación, Reexportación Proveniente de Régimen de Zona Franca, Régimen Común"
   },
   {
-    "code": "EX-33055.000",
+    "code": "EX-3.3055.000",
     "name": "Re-Exportación, Reexportación Proveniente de Admisión Temporal para Perfeccionamiento Activo con Garantía, Régimen Común"
   },
   {
-    "code": "EX-33056.000",
+    "code": "EX-3.3056.000",
     "name": "Re-Exportación, Reexportación Proveniente de Admisión Temporal Distribución Internacional Parque de Servicios, Régimen Común"
   },
   {
-    "code": "EX-33056.057",
+    "code": "EX-3.3056.057",
     "name": "Re-Exportación, Reexportación Proveniente de Admisión Temporal Distribución Internacional Parque de Servicios, Remisión entre Usuarios Directos del Mismo Parque de Servicios"
   },
   {
-    "code": "EX-33056.058",
+    "code": "EX-3.3056.058",
     "name": "Re-Exportación, Reexportación Proveniente de Admisión Temporal Distribución Internacional Parque de Servicios, Remisión entre Usuarios Directos de Diferente Parque de Servicios"
   },
   {
-    "code": "EX-33056.072",
+    "code": "EX-3.3056.072",
     "name": "Re-Exportación, Reexportación Proveniente de Admisión Temporal Distribución Internacional Parque de Servicios, Decreto 738 Eléctricos e Híbridos"
   },
   {
-    "code": "EX-33057.000",
+    "code": "EX-3.3057.000",
     "name": "Re-Exportación, Reexportación Proveniente de Admisión Temporal Operaciones Internacional de Logística Parque de Servicios, Régimen Común"
   },
   {
-    "code": "EX-33057.057",
+    "code": "EX-3.3057.057",
     "name": "Re-Exportación, Reexportación Proveniente de Admisión Temporal Operaciones Internacional de Logística Parque de Servicios, Remisión entre Usuarios Directos del Mismo Parque de Servicios"
   },
   {
-    "code": "EX-33057.058",
+    "code": "EX-3.3057.058",
     "name": "Re-Exportación, Reexportación Proveniente de Admisión Temporal Operaciones Internacional de Logística Parque de Servicios, Remisión entre Usuarios Directos de Diferente Parque de Servicios"
   },
   {
-    "code": "EX-33058.033",
+    "code": "EX-3.3058.033",
     "name": "Re-Exportación, Reexportación Proveniente de Admisión Temporal Centro Servicio LSI, Centro Internacional de llamadas (Call Center)"
   },
   {
-    "code": "EX-33058.036",
+    "code": "EX-3.3058.036",
     "name": "Re-Exportación, Reexportación Proveniente de Admisión Temporal Centro Servicio LSI, Reparación y Mantenimiento de Embarcaciones Marítimas LSI"
   },
   {
-    "code": "EX-33058.037",
+    "code": "EX-3.3058.037",
     "name": "Re-Exportación, Reexportación Proveniente de Admisión Temporal Centro Servicio LSI, Reparación y Mantenimiento de Aeronaves LSI"
   },
   {
-    "code": "EX-33058.043",
+    "code": "EX-3.3058.043",
     "name": "Re-Exportación, Reexportación Proveniente de Admisión Temporal Centro Servicio LSI, Reparación y Mantenimiento de Contenedores LSI"
   },
   {
-    "code": "EX-33059.000",
+    "code": "EX-3.3059.000",
     "name": "Re-Exportación, Reexportación Proveniente de Admisión Temporal Reparación de Equipo Tecnológico Parque de Servicios, Régimen Común"
   },
   {
-    "code": "EX-33059.057",
+    "code": "EX-3.3059.057",
     "name": "Re-Exportación, Reexportación Proveniente de Admisión Temporal Reparación de Equipo Tecnológico Parque de Servicios, Remisión entre Usuarios Directos del Mismo Parque de Servicios"
   },
   {
-    "code": "EX-33059.058",
+    "code": "EX-3.3059.058",
     "name": "Re-Exportación, Reexportación Proveniente de Admisión Temporal Reparación de Equipo Tecnológico Parque de Servicios, Remisión entre Usuarios Directos de Diferente Parque de Servicios"
   },
   {
-    "code": "EX-33070.000",
+    "code": "EX-3.3070.000",
     "name": "Re-Exportación, Reexportación Proveniente de Depósito., Régimen Común"
   },
   {
-    "code": "EX-33070.072",
+    "code": "EX-3.3070.072",
     "name": "Re-Exportación, Reexportación Proveniente de Depósito., Decreto 738 Eléctricos e Híbridos"
   },
   {
-    "code": "EX-33071.000",
+    "code": "EX-3.3071.000",
     "name": "Reexp. Prov. de Deposito."
   },
   {
-    "code": "EX-33052.000",
+    "code": "EX-3.3052.000",
     "name": "Reexp. Prov. de Adm Temp. para Perfeccionamiento Activo"
   },
   {
-    "code": "EX-33054.000",
-    "name": "Reexp. Prov. de Régimen de Zona Franca"
+    "code": "EX-3.3054.000",
+    "name": "Reexp. Prov. de Regimen de Zona Franca"
   },
   {
-    "code": "EX-33055.000",
-    "name": "Reexp. Prov de Adm.Temporal para Perfeccionamiento Activo con Garantía"
+    "code": "EX-3.3055.000",
+    "name": "Reexp. Prov.de Adm.Temporal para Perfeccionamiento Activo con Garantía"
   },
   {
-    "code": "EX-33056.000",
+    "code": "EX-3.3056.000",
     "name": "Re-Exp. Prov.de Adm.Temporal Ley de Servi. Internacionales"
   },
   {
-    "code": "EX-33057.000",
+    "code": "EX-3.3057.000",
     "name": "Reexportación Prov. de Centro de Servicio LSI"
   }
 ]
