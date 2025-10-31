@@ -69,25 +69,29 @@ class ExportInvoice extends Document
             unset($document['cuerpoDocumento'][$key]['numeroDocumento']);
         }
 
+        // Remove Summary fields
+        unset($document['resumen']['totalNoSuj']);
+        unset($document['resumen']['descuNoSuj']);
+        unset($document['resumen']['totalIva']);
+        unset($document['resumen']['ivaRete1']);
+        unset($document['resumen']['subTotalVentas']);
+        unset($document['resumen']['subTotal']);
+        unset($document['resumen']['reteRenta']);
+        unset($document['resumen']['tributos']);
+        unset($document['resumen']['descuExenta']);
+        unset($document['resumen']['descuGravada']);
+        unset($document['resumen']['saldoFavor']);
+        unset($document['resumen']['totalExenta']);
+
+        // Observations
+        $document['resumen']['observaciones'] = $this->getSummary()->getObservations() ?? '';
+
         /*"observaciones":[
             "Campo descuento es requerido en #/resumen",
             "Campo codIncoterms es requerido en #/resumen",
             "Campo descIncoterms es requerido en #/resumen",
-            "Campo observaciones es requerido en #/resumen",
             "Campo flete es requerido en #/resumen",
-            "Campo seguro es requerido en #/resumen",
-            "Campo totalNoSuj no esta permitido en #/resumen",
-            "Campo descuNoSuj no esta permitido en #/resumen",
-            "Campo totalIva no esta permitido en #/resumen",
-            "Campo ivaRete1 no esta permitido en #/resumen",
-            "Campo subTotalVentas no esta permitido en #/resumen",
-            "Campo subTotal no esta permitido en #/resumen",
-            "Campo reteRenta no esta permitido en #/resumen",
-            "Campo tributos no esta permitido en #/resumen",
-            "Campo descuExenta no esta permitido en #/resumen",
-            "Campo descuGravada no esta permitido en #/resumen",
-            "Campo saldoFavor no esta permitido en #/resumen",
-            "Campo totalExenta no esta permitido en #/resumen",
+            "Campo seguro es requerido en #/resumen"
         ]}
         */
 
