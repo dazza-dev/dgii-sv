@@ -6,6 +6,7 @@ use DazzaDev\DgiiSv\DataLoader;
 use DazzaDev\DgiiSv\Models\Base\Activity;
 use DazzaDev\DgiiSv\Models\Base\DeliveryPurpose;
 use DazzaDev\DgiiSv\Models\Base\IdentificationType;
+use DazzaDev\DgiiSv\Models\Base\PersonType;
 use DazzaDev\DgiiSv\Models\Geography\Address;
 use DazzaDev\DgiiSv\Traits\ActivityTrait;
 use DazzaDev\DgiiSv\Traits\EntityTrait;
@@ -23,6 +24,16 @@ class Receiver
      * Identification type
      */
     private ?IdentificationType $identificationType = null;
+
+    /**
+     * Trade Name
+     */
+    private ?string $tradeName = null;
+
+    /**
+     * Person type
+     */
+    private ?PersonType $personType = null;
 
     /**
      * Delivery purpose
@@ -62,6 +73,10 @@ class Receiver
             $this->setName($data['name']);
         }
 
+        if (isset($data['trade_name'])) {
+            $this->setTradeName($data['trade_name']);
+        }
+
         if (isset($data['phone'])) {
             $this->setPhone($data['phone']);
         }
@@ -80,6 +95,10 @@ class Receiver
 
         if (isset($data['delivery_purpose'])) {
             $this->setDeliveryPurpose($data['delivery_purpose']);
+        }
+
+        if (isset($data['person_type'])) {
+            $this->setPersonType($data['person_type']);
         }
     }
 
@@ -117,6 +136,40 @@ class Receiver
         $deliveryPurpose = (new DataLoader('titulos-traslado-bienes'))->getByCode($deliveryPurposeCode);
 
         $this->deliveryPurpose = new DeliveryPurpose($deliveryPurpose);
+    }
+
+    /**
+     * Trade Name
+     */
+    public function getTradeName(): ?string
+    {
+        return $this->tradeName;
+    }
+
+    /**
+     * Set Trade Name
+     */
+    public function setTradeName(string $tradeName): void
+    {
+        $this->tradeName = $tradeName;
+    }
+
+    /**
+     * Person type
+     */
+    public function getPersonType(): ?PersonType
+    {
+        return $this->personType;
+    }
+
+    /**
+     * Set Person Type
+     */
+    public function setPersonType(string|int $personTypeCode): void
+    {
+        $personType = (new DataLoader('tipos-persona'))->getByCode($personTypeCode);
+
+        $this->personType = new PersonType($personType);
     }
 
     /**

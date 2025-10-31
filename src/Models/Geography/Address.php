@@ -22,6 +22,11 @@ class Address
     private ?Municipality $municipality = null;
 
     /**
+     * Country
+     */
+    private ?Country $country = null;
+
+    /**
      * Address constructor
      */
     public function __construct(array $data = [])
@@ -48,6 +53,10 @@ class Address
 
         if (isset($data['municipality'])) {
             $this->setMunicipality($data['municipality']);
+        }
+
+        if (isset($data['country'])) {
+            $this->setCountry($data['country']);
         }
     }
 
@@ -125,6 +134,36 @@ class Address
         // string code
         $data = (new DataLoader('municipios'))->getByCode($municipality);
         $this->municipality = new Municipality($data);
+    }
+
+    /**
+     * Get Country
+     */
+    public function getCountry(): ?Country
+    {
+        return $this->country;
+    }
+
+    /**
+     * Set Country using string code, array or Country instance
+     */
+    public function setCountry(Country|array|string $country): void
+    {
+        if ($country instanceof Country) {
+            $this->country = $country;
+
+            return;
+        }
+
+        if (is_array($country)) {
+            $this->country = new Country($country);
+
+            return;
+        }
+
+        // string code
+        $data = (new DataLoader('paises'))->getByCode($country);
+        $this->country = new Country($data);
     }
 
     /**

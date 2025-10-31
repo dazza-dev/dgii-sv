@@ -28,6 +28,66 @@ class ExportInvoice extends Document
     {
         $document = parent::toArray();
 
+        // Remove fields
+        unset($document['documentoRelacionado']);
+        unset($document['extension']);
+
+        // Remove Receptor fields
+        unset($document['receptor']['codActividad']);
+        unset($document['receptor']['nrc']);
+        unset($document['receptor']['direccion']);
+        $document['receptor']['nombreComercial'] = $this->getReceiver()->getTradeName();
+
+        // Address
+        $address = $this->getReceiver()->getAddress();
+        $document['receptor']['complemento'] = $address->getComplement();
+
+        // Country
+        $country = $address?->getCountry();
+        $document['receptor']['codPais'] = $country?->getCode();
+        $document['receptor']['nombrePais'] = $country?->getName();
+
+        // Person Type
+        $document['receptor']['tipoPersona'] = (int) $this->getReceiver()->getPersonType()?->getCode();
+
+        // Remove cuerpoDocumento fields
+        foreach ($document['cuerpoDocumento'] as $key => $item) {
+            unset($document['cuerpoDocumento'][$key]['tipoItem']);
+            unset($document['cuerpoDocumento'][$key]['ivaItem']);
+            unset($document['cuerpoDocumento'][$key]['ventaNoSuj']);
+            unset($document['cuerpoDocumento'][$key]['ventaExenta']);
+            unset($document['cuerpoDocumento'][$key]['psv']);
+            unset($document['cuerpoDocumento'][$key]['codTributo']);
+            unset($document['cuerpoDocumento'][$key]['numeroDocumento']);
+        }
+
+        /*"observaciones":[
+            "Campo motivoContigencia es requerido en #/identificacion",
+            "Campo motivoContin no esta permitido en #/identificacion",
+            "Campo descuento es requerido en #/resumen",
+            "Campo codIncoterms es requerido en #/resumen",
+            "Campo descIncoterms es requerido en #/resumen",
+            "Campo observaciones es requerido en #/resumen",
+            "Campo flete es requerido en #/resumen",
+            "Campo seguro es requerido en #/resumen",
+            "Campo totalNoSuj no esta permitido en #/resumen",
+            "Campo descuNoSuj no esta permitido en #/resumen",
+            "Campo totalIva no esta permitido en #/resumen",
+            "Campo ivaRete1 no esta permitido en #/resumen",
+            "Campo subTotalVentas no esta permitido en #/resumen",
+            "Campo subTotal no esta permitido en #/resumen",
+            "Campo reteRenta no esta permitido en #/resumen",
+            "Campo tributos no esta permitido en #/resumen",
+            "Campo descuExenta no esta permitido en #/resumen",
+            "Campo descuGravada no esta permitido en #/resumen",
+            "Campo saldoFavor no esta permitido en #/resumen",
+            "Campo totalExenta no esta permitido en #/resumen",
+            "Campo tipoItemExpor es requerido en #/emisor",
+            "Campo recintoFiscal es requerido en #/emisor",
+            "Campo regimen es requerido en #/emisor"
+        ]}
+        */
+
         return $document;
     }
 }
