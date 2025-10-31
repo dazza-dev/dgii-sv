@@ -1,10 +1,10 @@
 <?php
 
-namespace DazzaDev\DgiiSv\Models\Body\LineItem;
+namespace DazzaDev\DgiiSv\Models\Body;
 
 use DazzaDev\DgiiSv\Models\Base\BaseTypeModel;
 
-class LineItemType extends BaseTypeModel
+class ItemType extends BaseTypeModel
 {
     /**
      * Get array representation

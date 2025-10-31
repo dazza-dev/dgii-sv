@@ -3,6 +3,7 @@
 namespace DazzaDev\DgiiSv\Models\Body\LineItem;
 
 use DazzaDev\DgiiSv\DataLoader;
+use DazzaDev\DgiiSv\Models\Body\ItemType;
 use DazzaDev\DgiiSv\Models\Body\Tax\Tax;
 use DazzaDev\DgiiSv\Traits\TaxTrait;
 
@@ -18,7 +19,7 @@ class LineItem
     /**
      * Item Type (tipoItem)
      */
-    private ?LineItemType $itemType = null;
+    private ?ItemType $itemType = null;
 
     /**
      * Related Document Number (numeroDocumento)
@@ -199,7 +200,7 @@ class LineItem
     /**
      * Get item type
      */
-    public function getItemType(): ?LineItemType
+    public function getItemType(): ?ItemType
     {
         return $this->itemType;
     }
@@ -211,7 +212,7 @@ class LineItem
     {
         $itemType = (new DataLoader('tipos-item'))->getByCode($itemTypeCode);
 
-        $this->itemType = new LineItemType($itemType);
+        $this->itemType = new ItemType($itemType);
     }
 
     /**
