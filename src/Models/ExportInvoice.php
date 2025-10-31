@@ -83,15 +83,17 @@ class ExportInvoice extends Document
         unset($document['resumen']['saldoFavor']);
         unset($document['resumen']['totalExenta']);
 
+        // Summary Fields
+        $document['resumen']['descuento'] = $this->getSummary()->getGlobalDiscount();
+        $document['resumen']['flete'] = $this->getSummary()->getFreight();
+        $document['resumen']['seguro'] = $this->getSummary()->getInsurance();
+
         // Observations
         $document['resumen']['observaciones'] = $this->getSummary()->getObservations() ?? '';
 
         /*"observaciones":[
-            "Campo descuento es requerido en #/resumen",
             "Campo codIncoterms es requerido en #/resumen",
             "Campo descIncoterms es requerido en #/resumen",
-            "Campo flete es requerido en #/resumen",
-            "Campo seguro es requerido en #/resumen"
         ]}
         */
 

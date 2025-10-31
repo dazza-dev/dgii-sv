@@ -110,6 +110,16 @@ class Summary
     public float $balanceInFavor = 0.0;
 
     /**
+     * Freight amount
+     */
+    public float $freight = 0.0;
+
+    /**
+     * Insurance amount
+     */
+    public float $insurance = 0.0;
+
+    /**
      * Operation condition
      */
     public ?OperationCondition $operationCondition = null;
@@ -223,6 +233,14 @@ class Summary
 
         if (isset($data['balance_in_favor'])) {
             $this->setBalanceInFavor($data['balance_in_favor']);
+        }
+
+        if (isset($data['freight'])) {
+            $this->setFreight($data['freight']);
+        }
+
+        if (isset($data['insurance'])) {
+            $this->setInsurance($data['insurance']);
         }
 
         if (isset($data['operation_condition'])) {
@@ -556,6 +574,38 @@ class Summary
     public function setBalanceInFavor(float $balanceInFavor): void
     {
         $this->balanceInFavor = $balanceInFavor;
+    }
+
+    /**
+     * Get freight
+     */
+    public function getFreight(): float
+    {
+        return $this->freight;
+    }
+
+    /**
+     * Set freight
+     */
+    public function setFreight(float $freight): void
+    {
+        $this->freight = $freight;
+    }
+
+    /**
+     * Get insurance
+     */
+    public function getInsurance(): float
+    {
+        return $this->insurance;
+    }
+
+    /**
+     * Set insurance
+     */
+    public function setInsurance(float $insurance): void
+    {
+        $this->insurance = $insurance;
     }
 
     /**
