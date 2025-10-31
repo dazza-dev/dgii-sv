@@ -5,25 +5,19 @@ namespace DazzaDev\DgiiSv\Models\Receiver;
 use DazzaDev\DgiiSv\DataLoader;
 use DazzaDev\DgiiSv\Models\Base\Activity;
 use DazzaDev\DgiiSv\Models\Base\DeliveryPurpose;
-use DazzaDev\DgiiSv\Models\Base\IdentificationType;
 use DazzaDev\DgiiSv\Models\Base\PersonType;
 use DazzaDev\DgiiSv\Models\Geography\Address;
 use DazzaDev\DgiiSv\Traits\ActivityTrait;
 use DazzaDev\DgiiSv\Traits\EntityTrait;
-use DazzaDev\DgiiSv\Traits\IdentificationNumberTrait;
+use DazzaDev\DgiiSv\Traits\IdentificationTrait;
 use DazzaDev\DgiiSv\Traits\NameTrait;
 
 class Receiver
 {
     use ActivityTrait;
     use EntityTrait;
-    use IdentificationNumberTrait;
+    use IdentificationTrait;
     use NameTrait;
-
-    /**
-     * Identification type
-     */
-    private ?IdentificationType $identificationType = null;
 
     /**
      * Trade Name
@@ -100,24 +94,6 @@ class Receiver
         if (isset($data['person_type'])) {
             $this->setPersonType($data['person_type']);
         }
-    }
-
-    /**
-     * Get NIT
-     */
-    public function getIdentificationType(): ?IdentificationType
-    {
-        return $this->identificationType;
-    }
-
-    /**
-     * Set Identification Type
-     */
-    public function setIdentificationType(string $identificationTypeCode): void
-    {
-        $identificationType = (new DataLoader('tipos-identificacion'))->getByCode($identificationTypeCode);
-
-        $this->identificationType = new IdentificationType($identificationType);
     }
 
     /**

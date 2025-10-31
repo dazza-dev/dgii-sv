@@ -2,12 +2,12 @@
 
 namespace DazzaDev\DgiiSv\Models\Body\Extension;
 
-use DazzaDev\DgiiSv\Traits\IdentificationNumberTrait;
+use DazzaDev\DgiiSv\Traits\IdentificationTrait;
 use DazzaDev\DgiiSv\Traits\NameTrait;
 
 class PersonBase
 {
-    use IdentificationNumberTrait;
+    use IdentificationTrait;
     use NameTrait;
 
     /**
@@ -31,6 +31,10 @@ class PersonBase
             $this->setName($data['name']);
         }
 
+        if (isset($data['identification_type'])) {
+            $this->setIdentificationType($data['identification_type']);
+        }
+
         if (isset($data['identification_number'])) {
             $this->setIdentificationNumber($data['identification_number']);
         }
@@ -41,9 +45,16 @@ class PersonBase
      */
     public function toArray(): array
     {
-        return [
-            'name' => $this->getName(),
-            'identification_number' => $this->getIdentificationNumber(),
-        ];
+        $data['name'] = $this->getName();
+
+        // Add identification type if it exists
+        if ($this->getIdentificationType() !== null) {
+            $data['identification_type'] = $this->getIdentificationType()->getCode();
+        }
+
+        // Add identification number
+        $data['identification_number'] = $this->getIdentificationNumber();
+
+        return $data;
     }
 }
