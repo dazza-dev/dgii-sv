@@ -62,9 +62,9 @@ trait ContingencyTypeTrait
     }
 
     /**
-     * Get custom reason
+     * Get custom contingency reason
      */
-    public function getCustomReason(): ?string
+    public function getCustomContingencyReason(): ?string
     {
         return $this->getContingencyReason()
             ?? $this->getContingencyType()?->getName();

@@ -487,7 +487,7 @@ class Document extends DTEModel
             'tipoModelo' => (int) $this->getBillingModel()->getCode(),
             'tipoOperacion' => (int) $this->getOperationType()->getCode(),
             'tipoContingencia' => $this->getContingencyTypeCode(),
-            'motivoContin' => $this->getCustomReason(),
+            'motivoContin' => $this->getCustomContingencyReason(),
             'fecEmi' => $this->getIssueDate(),
             'horEmi' => $this->getIssueTime(),
             'tipoMoneda' => $this->getCurrency(),

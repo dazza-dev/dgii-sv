@@ -192,7 +192,7 @@ class Contingency extends DTEModel
                 'hInicio' => $this->getStartTime(),
                 'hFin' => $this->getEndTime(),
                 'tipoContingencia' => $this->getContingencyTypeCode(),
-                'motivoContingencia' => $this->getCustomReason(),
+                'motivoContingencia' => $this->getCustomContingencyReason(),
             ],
         ];
     }

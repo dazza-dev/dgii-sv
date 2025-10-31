@@ -34,7 +34,7 @@ class ExportInvoice extends Document
 
         // Identification
         unset($document['identificacion']['motivoContin']);
-        $document['identificacion']['motivoContigencia'] = $this->getCustomReason();
+        $document['identificacion']['motivoContigencia'] = $this->getCustomContingencyReason();
 
         // Remove Receptor fields
         unset($document['receptor']['codActividad']);
