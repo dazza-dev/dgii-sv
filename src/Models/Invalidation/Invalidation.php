@@ -2,7 +2,7 @@
 
 namespace DazzaDev\DgiiSv\Models\Invalidation;
 
-use DazzaDev\CarvajalXmlGenerator\DataLoader;
+use DazzaDev\DgiiSv\DataLoader;
 use DazzaDev\DgiiSv\Models\Base\DTEModel;
 use DazzaDev\DgiiSv\Traits\IssuerTrait;
 use DazzaDev\DgiiSv\Traits\RequesterTrait;
@@ -110,19 +110,19 @@ class Invalidation extends DTEModel
      */
     public function getInvalidationIssuer(): array
     {
-        $issuer = $this->getIssuer()->toArray();
+        $issuer = $this->getIssuer();
 
         return [
-            'nit' => $issuer['nit'],
-            'nombre' => $issuer['nombre'],
-            'tipoEstablecimiento' => $issuer['tipoEstablecimiento'],
-            'nomEstablecimiento' => $issuer['nomEstablecimiento'],
-            'codEstableMH' => $issuer['codEstableMH'],
-            'codEstable' => $issuer['codEstable'],
-            'codPuntoVentaMH' => $issuer['codPuntoVentaMH'],
-            'codPuntoVenta' => $issuer['codPuntoVenta'],
-            'telefono' => $issuer['telefono'],
-            'correo' => $issuer['correo'],
+            'nit' => $issuer->getNit(),
+            'nombre' => $issuer->getLegalName(),
+            'tipoEstablecimiento' => $issuer->getEstablishment()?->getType(),
+            'nomEstablecimiento' => $issuer->getEstablishment()?->getName(),
+            'codEstableMH' => $issuer->getEstablishment()?->getInternalCode(),
+            'codEstable' => $issuer->getEstablishment()?->getCode(),
+            'codPuntoVentaMH' => $issuer->getSalePoint()?->getInternalCode(),
+            'codPuntoVenta' => $issuer->getSalePoint()?->getCode(),
+            'telefono' => $issuer->getPhone(),
+            'correo' => $issuer->getEmail(),
         ];
     }
 

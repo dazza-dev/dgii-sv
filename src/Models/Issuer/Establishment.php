@@ -3,9 +3,12 @@
 namespace DazzaDev\DgiiSv\Models\Issuer;
 
 use DazzaDev\DgiiSv\DataLoader;
+use DazzaDev\DgiiSv\Traits\NameTrait;
 
 class Establishment
 {
+    use NameTrait;
+
     /**
      * Establishment Type
      */
@@ -44,6 +47,10 @@ class Establishment
 
         if (isset($data['code'])) {
             $this->setCode($data['code']);
+        }
+
+        if (isset($data['name'])) {
+            $this->setName($data['name']);
         }
 
         if (isset($data['internal_code'])) {
@@ -110,6 +117,11 @@ class Establishment
             'codEstableMH' => $this->getCode(),
             'codEstable' => $this->getInternalCode(),
         ];
+
+        // Add Establishment Name if available
+        if ($this->getName()) {
+            $data['nomEstablecimiento'] = $this->getName();
+        }
 
         // Add Establishment Type if available
         if ($this->getType()) {
