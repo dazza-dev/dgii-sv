@@ -5,12 +5,14 @@ namespace DazzaDev\DgiiSv\Models\Invalidation;
 use DazzaDev\DgiiSv\DataLoader;
 use DazzaDev\DgiiSv\Models\Base\DTEModel;
 use DazzaDev\DgiiSv\Traits\IssuerTrait;
+use DazzaDev\DgiiSv\Traits\JsonTrait;
 use DazzaDev\DgiiSv\Traits\RequesterTrait;
 use DazzaDev\DgiiSv\Traits\ResponsibleTrait;
 
 class Invalidation extends DTEModel
 {
     use IssuerTrait;
+    use JsonTrait;
     use RequesterTrait;
     use ResponsibleTrait;
 
@@ -115,7 +117,7 @@ class Invalidation extends DTEModel
         return [
             'nit' => $issuer->getNit(),
             'nombre' => $issuer->getLegalName(),
-            'tipoEstablecimiento' => $issuer->getEstablishment()?->getType(),
+            'tipoEstablecimiento' => $issuer->getEstablishment()?->getType()?->getCode(),
             'nomEstablecimiento' => $issuer->getEstablishment()?->getName(),
             'codEstableMH' => $issuer->getEstablishment()?->getInternalCode(),
             'codEstable' => $issuer->getEstablishment()?->getCode(),
