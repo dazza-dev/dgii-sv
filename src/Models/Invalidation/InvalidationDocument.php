@@ -2,6 +2,7 @@
 
 namespace DazzaDev\DgiiSv\Models\Invalidation;
 
+use DazzaDev\DgiiSv\DateValidator;
 use DazzaDev\DgiiSv\Traits\DocumentTypeTrait;
 use DazzaDev\DgiiSv\Traits\JsonTrait;
 use DazzaDev\DgiiSv\Traits\ReceiverTrait;
@@ -145,6 +146,12 @@ class InvalidationDocument
      */
     public function setEmissionDate(string $emissionDate): void
     {
+        $isValid = (new DateValidator)->isValidDateFormat($emissionDate);
+
+        if (! $isValid) {
+            throw new \InvalidArgumentException('Formato de fecha inválido. Se esperaba: Y-m-d');
+        }
+
         $this->emissionDate = $emissionDate;
     }
 
