@@ -27,6 +27,11 @@ class Invalidation extends DTEModel
     private ?string $invalidationReason = null;
 
     /**
+     * Invalidation document
+     */
+    private ?InvalidationDocument $document = null;
+
+    /**
      * Invalidation constructor
      */
     public function __construct(array $data = [])
@@ -45,6 +50,10 @@ class Invalidation extends DTEModel
             return;
         }
 
+        if (isset($data['document'])) {
+            $this->setInvalidationDocument($data['document']);
+        }
+
         if (isset($data['type'])) {
             $this->setInvalidationType($data['type']);
         }
@@ -52,6 +61,22 @@ class Invalidation extends DTEModel
         if (isset($data['reason'])) {
             $this->setInvalidationReason($data['reason']);
         }
+    }
+
+    /**
+     * Get invalidation document
+     */
+    public function getInvalidationDocument(): ?InvalidationDocument
+    {
+        return $this->document;
+    }
+
+    /**
+     * Set invalidation document
+     */
+    public function setInvalidationDocument(array $data): void
+    {
+        $this->document = new InvalidationDocument($data);
     }
 
     /**
@@ -143,6 +168,7 @@ class Invalidation extends DTEModel
                 'horAnula' => $this->getIssueTime(),
             ]),
             'emisor' => $this->getInvalidationIssuer(),
+            'documento' => $this->getInvalidationDocument()?->toArray(),
             'motivo' => [
                 'tipoAnulacion' => $this->getInvalidationCode(),
                 'motivoAnulacion' => $this->getCustomInvalidationReason(),
