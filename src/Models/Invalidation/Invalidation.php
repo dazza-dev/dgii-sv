@@ -42,6 +42,14 @@ class Invalidation extends DTEModel
         if (empty($data)) {
             return;
         }
+
+        if (isset($data['type'])) {
+            $this->setInvalidationType($data['type']);
+        }
+
+        if (isset($data['reason'])) {
+            $this->setInvalidationReason($data['reason']);
+        }
     }
 
     /**
@@ -123,6 +131,10 @@ class Invalidation extends DTEModel
      */
     public function toArray(): array
     {
+        $requester = $this->getRequester();
+        $responsible = $this->getResponsible();
+
+        //
         return [
             'identificacion' => array_merge(parent::toArray(), [
                 'fecAnula' => $this->getIssueDate(),
@@ -132,10 +144,13 @@ class Invalidation extends DTEModel
             'motivo' => [
                 'tipoAnulacion' => $this->getInvalidationCode(),
                 'motivoAnulacion' => $this->getCustomInvalidationReason(),
-
+                'nombreResponsable' => $responsible->getName(),
+                'tipDocResponsable' => $responsible->getIdentificationType()?->getCode(),
+                'numDocResponsable' => $responsible->getIdentificationNumber(),
+                'nombreSolicita' => $requester->getName(),
+                'tipDocSolicita' => $requester->getIdentificationType()?->getCode(),
+                'numDocSolicita' => $requester->getIdentificationNumber(),
             ],
-            'requester' => $this->getRequester()->toArray(),
-            'responsible' => $this->getResponsible()->toArray(),
         ];
     }
 }
